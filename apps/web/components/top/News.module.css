@@ -1,0 +1,119 @@
+.topNews {
+  display: flex;
+  position: relative;
+}
+
+.section {
+  display: flex;
+  position: relative;
+  padding: 160px max(80px, calc(50% - 620px));
+
+  .sectionHeader {
+    display: flex;
+    width: 390px;
+    margin-bottom: 60px;
+
+    .sectionHeadding {
+      padding-right: 18px;
+      width: 500px;
+
+      .sectionTitle {
+        background: var(--gradient-01);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: var(--color-trans);
+        font-family: var(--font-en);
+        font-size: 54px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        line-height: 1.333;
+      }
+
+      .sectionTitleJP {
+        font-style: var(--font-jp);
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        line-height: 1.5;
+        margin-top: 20px;
+        padding-left: 56px;
+        text-indent: -56px;
+        color: var(--color-black);
+      }
+
+      .sectionTitleJP:before {
+        background-color: var(--color-base);
+        content: "";
+        display: inline-block;
+        height: 1px;
+        margin-right: 16px;
+        vertical-align: middle;
+        width: 40px;
+      }
+    }
+  }
+
+  .listedNews {
+    border-top: 1px solid #dee0e1;
+    width: calc(100% - 390px);
+
+    > li {
+      border-bottom: 1px solid #dee0e1;
+      padding: 30px 0;
+
+      .listedNewsHead {
+        display: flex;
+        margin-bottom: 20px;
+
+        .newsDate {
+          color: #888;
+          line-height: 26px;
+          margin-right: 13px;
+        }
+
+        .newsCats {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+
+          .newsCat {
+            background-color: var(--color-b);
+            color: var(--color-white);
+            font-size: 13px;
+            line-height: 26px;
+            padding: 0 10px !important;
+          }
+        }
+      }
+
+      .listedNewsTitle {
+        line-height: 2;
+
+        a {
+          color: var(--color-black);
+          text-decoration: underline;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .viewmore {
+    left: max(80px, calc(50% - 620px));
+    position: absolute;
+    top: 365px;
+    font-family: var(--font-en);
+
+    a {
+      align-items: center;
+      text-decoration: none;
+      color: var(--color-black);
+      border: 1px solid var(--color-base);
+      display: inline-flex;
+      font-weight: 700;
+      height: 60px;
+      justify-content: center;
+      width: 180px;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+.topTheme {
+  background: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/bg_theme.png)
+    50% / cover no-repeat;
+  width: 100%;
+  padding: 160px max(80px, calc(50% - 620px));
+
+  .hs_cos_wrapper {
+    display: flex;
+    margin-bottom: 60px;
+
+    .sectionHeadding {
+      padding-right: 1em;
+      width: 500px;
+
+      .sectionTitle {
+        font-family: var(--font-jp);
+        font-size: 40px;
+      }
+
+      .sectionTitleJP {
+      }
+      .sectionTitleJP:before {
+        background-color: var(--color-white);
+        content: "";
+        display: inline-block;
+        height: 1px;
+        margin-right: 16px;
+        vertical-align: middle;
+        width: 40px;
+      }
+    }
+
+    .sectionHeaderLead {
+      width: calc(100% - 500px);
+
+      p {
+        line-height: 2;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .linkListCol3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+
+    li {
+      font-size: 20px;
+      width: calc(33.33333% - 8px);
+
+      .arrow02 {
+        align-items: center;
+        border: 1px solid var(--color-white);
+        display: flex;
+        height: 120px;
+        justify-content: center;
+        padding: 0 2em;
+        position: relative;
+        text-decoration: none;
+        transition: 0.3s;
+
+        .linkListName {
+          font-weight: 700;
+          line-height: 2;
+        }
+      }
+
+      .arrow02:before {
+        height: 9px;
+        top: calc(50% - 4.5px);
+        width: 30px;
+        background-blend-mode: multiply;
+        background-color: var(--color-white);
+        content: "";
+        display: block;
+        height: 11px;
+        mask-image: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/ico_arrow.svg);
+        -webkit-mask-image: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/ico_arrow.svg);
+        mask-size: contain;
+        -webkit-mask-size: contain;
+        position: absolute;
+        right: 0;
+        top: calc(50% - 5.5px);
+        transition: 0.3s;
+
+        right: 20px;
+      }
+    }
+  }
+}

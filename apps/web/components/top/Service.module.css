@@ -1,0 +1,99 @@
+.section {
+  padding: 160px max(80px, calc(50% - 620px));
+  padding-bottom: 0;
+
+  .sectionHeader {
+    display: flex;
+    margin-bottom: 60px;
+
+    .sectionHeadding {
+      padding-right: 1em;
+      width: 500px;
+
+      .sectionTitle {
+        background: var(--gradient-01);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: var(--color-trans);
+        font-family: var(--font-en);
+        font-size: 54px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        line-height: 1.333;
+      }
+
+      .sectionTitleJP {
+        color: var(--color-black);
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        line-height: 1.5;
+        margin-top: 20px;
+        padding-left: 56px;
+        text-indent: -56px;
+      }
+
+      .sectionTitleJP:before {
+        background-color: var(--color-base);
+        content: "";
+        display: inline-block;
+        height: 1px;
+        margin-right: 16px;
+        vertical-align: middle;
+        width: 40px;
+      }
+    }
+  }
+
+  .topServiceList {
+    display: flex;
+    gap: 1px;
+    height: 475px;
+    margin: 0 min(-80px, calc(-50vw + 628.5px));
+
+    li {
+      width: 25%;
+
+      .arrow02 {
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+        transition: 0.3s;
+
+        .topServiceListImg {
+          img {
+            width: 100%;
+          }
+        }
+
+        .topServiceListTitle {
+          bottom: 40px;
+          font-size: 18px;
+          font-weight: 700;
+          left: 40px;
+          line-height: 1.5;
+          position: absolute;
+          width: calc(100% - 130px);
+        }
+      }
+
+      .arrow02:before {
+        background-blend-mode: multiply;
+        background-color: var(--color-white);
+        content: "";
+        display: block;
+        mask-image: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/ico_arrow.svg);
+        -webkit-mask-image: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/ico_arrow.svg);
+        mask-size: contain;
+        -webkit-mask-size: contain;
+        position: absolute;
+        transition: 0.3s;
+        width: 30px;
+        bottom: 48.5px;
+        right: 40px;
+        top: auto;
+        height: 9px;
+      }
+    }
+  }
+}

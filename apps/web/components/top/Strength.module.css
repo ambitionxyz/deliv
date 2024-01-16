@@ -1,0 +1,74 @@
+.section {
+  width: 100%;
+  padding: 160px max(80px, calc(50% - 620px));
+
+  .sectionHeader {
+    display: flex;
+    margin-bottom: 60px;
+
+    .sectionHeadding {
+      padding-right: 1em;
+      width: 500px;
+
+      .sectionTitle {
+        font-family: var(--font-jp);
+        color: var(--color-b);
+        font-size: 40px;
+      }
+
+      .sectionTitleJP {
+        font-size: 22px;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        line-height: 1.5;
+        margin-top: 20px;
+        padding-left: 56px;
+        text-indent: -56px;
+        color: var(--color-black);
+      }
+
+      .sectionTitleJP:before {
+        background-color: var(--color-base);
+        content: "";
+        display: inline-block;
+        height: 1px;
+        margin-right: 16px;
+        vertical-align: middle;
+        width: 40px;
+      }
+    }
+
+    .sectionHeaderLead {
+      width: calc(100% - 500px);
+
+      p {
+        color: var(--color-black);
+        line-height: 2;
+        font-size: 18px;
+      }
+
+      .sectionHeaderBtn {
+        margin-top: 28px;
+        text-align: right;
+
+        a {
+          color: var(--color-black);
+          padding-right: 56px;
+          font-family: var(--font-en);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .topStrengthGraph {
+    margin: 50px auto 0;
+    width: 89.19355%;
+
+    img {
+      vertical-align: top;
+      width: 100%;
+    }
+  }
+}

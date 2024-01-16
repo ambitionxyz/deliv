@@ -1,0 +1,49 @@
+.recruitCNV {
+  background-color: var(--color-white);
+  padding-bottom: 2px;
+
+  ul {
+    display: flex;
+    gap: 2px;
+
+    li {
+      width: calc(50% - 1px);
+
+      .arrow02 {
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+        transition: 0.3s;
+
+        img {
+          width: 100%;
+        }
+      }
+      .recruitCNVText {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: flex-end;
+        left: 0;
+        padding: 40px 90px 40px 40px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        .recruitCNVTitle {
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.666;
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 2;
+        }
+      }
+    }
+  }
+}
