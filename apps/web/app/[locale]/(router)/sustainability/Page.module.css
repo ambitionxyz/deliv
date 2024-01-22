@@ -1,0 +1,50 @@
+.p {
+  margin-top: 36px;
+  margin-bottom: 36px;
+  line-height: 2;
+  color: var(--color-black);
+  font-family: var(--font-jp);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.pageIntro {
+  align-items: flex-start;
+  display: flex;
+
+  .bdrTitle {
+    padding-right: 100px;
+    white-space: nowrap;
+    color: var(--color-black);
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    position: relative;
+  }
+
+  .bdrTitle:before {
+    color: var(--color-black);
+    background: var(--gradient-01);
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 80px;
+  }
+
+  .pageIntroBody {
+    p {
+      color: var(--color-black);
+      line-height: 2;
+      font-size: 18px;
+      font-family: var(--font-jp);
+      margin-bottom: 132px;
+      font-weight: 500;
+    }
+  }
+}

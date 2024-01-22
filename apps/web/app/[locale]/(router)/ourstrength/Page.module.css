@@ -1,0 +1,84 @@
+.topicPath {
+  padding: 16px 80px;
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    color: var(--color-black);
+    font-size: 11px;
+    line-height: 1.545;
+    padding-right: 15px;
+    position: relative;
+  }
+  span {
+    color: var(--color-black);
+    font-size: 11px;
+    line-height: 1.545;
+    position: relative;
+    padding-right: 15px;
+  }
+}
+
+.content {
+  background-color: var(--color-white);
+  overflow: hidden;
+
+  .section {
+    padding: 160px max(80px, calc(50% - 620px));
+    padding-top: 110px;
+
+    .coloredColumn {
+      background-color: var(--color-gray);
+      display: flex;
+      justify-content: space-between;
+      padding: 80px;
+      position: relative;
+
+      .columnBody {
+        width: 53.24074%;
+
+        .iconTitle {
+          align-items: center;
+          display: flex;
+          font-size: 21px;
+          font-weight: 700;
+          line-height: 2;
+          margin-bottom: 30px;
+
+          .icon {
+            line-height: 1;
+            width: 75px;
+          }
+
+          .txt {
+            width: calc(100% - 75px);
+            font-size: 21px;
+            font-family: var(--font-jp);
+            color: var(--color-black);
+          }
+        }
+
+        p {
+          line-height: 2;
+          font-family: var(--font-jp);
+          color: var(--color-black);
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+
+      .columnImage {
+        width: 41.2037%;
+
+        img {
+          vertical-align: top;
+          width: 100%;
+        }
+      }
+    }
+
+    .coloredColumn + .coloredColumn {
+      margin-top: 80px;
+    }
+  }
+}

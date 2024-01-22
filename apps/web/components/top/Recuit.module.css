@@ -1,6 +1,6 @@
 .recruitCNV {
   background-color: var(--color-white);
-  padding-bottom: 2px;
+  padding-bottom: 0;
 
   ul {
     display: flex;
