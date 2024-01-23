@@ -51,19 +51,19 @@ const HeaderRoot = () => {
               },
               {
                 content: "モダナイゼーション",
-                link: "/jp/technology-strategy-consulting",
+                link: "/jp/modernization",
               },
               {
                 content: "エマージングテクノロジー",
-                link: "/jp/technology-strategy-consulting",
+                link: "/jp/emerging-technology",
               },
               {
                 content: "データビジュアライゼーション",
-                link: "/jp/technology-strategy-consulting",
+                link: "/jp/data-visualization",
               },
               {
-                content: "ソリューションエンジニアリング",
-                link: "/jp/technology-strategy-consulting",
+                content: "AI＆アナリティクス",
+                link: "/jp/ai_analytics",
               },
             ],
           },
@@ -84,33 +84,41 @@ const HeaderRoot = () => {
         href: "",
         megaMenu: [
           {
-            title: "コンサルティング",
+            title: "経営理念",
+            link: "/jp/the-pledge",
             image:
-              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_01_01.png",
+              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_01.png",
+            texts: [],
+          },
+          {
+            title: "会社概要",
+            link: "/jp/company_profile",
+            image:
+              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_02.png",
             desImage: [
               {
-                contentDesImage: "テクノロジー戦略",
-                linkDesImage: "/jp/technology-strategy-consulting",
+                contentDesImage: "テクノロジーパートナー",
+                linkDesImage: "/jp/company_profile/products",
+              },
+              {
+                contentDesImage: "関連会社",
+                linkDesImage: "/jp/company_profile/associated_company",
               },
             ],
             texts: [],
           },
           {
-            title: "強みと特長",
+            title: "リーダーシップ",
+            link: "/jp/leadership",
             image:
-              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_01_02.png",
+              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_03.png",
             texts: [],
           },
           {
-            title: "強みと特長",
+            title: "人材育成",
+            link: "/jp/employee-development-system",
             image:
-              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_01_02.png",
-            texts: [],
-          },
-          {
-            title: "強みと特長",
-            image:
-              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_01_02.png",
+              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_04.png",
             texts: [],
           },
         ],
@@ -124,13 +132,43 @@ const HeaderRoot = () => {
       },
       {
         content: "Information",
-        description: "案件事例",
+        description: "お知らせ",
         active: false,
         href: "",
         top: {
           label: "お知らせトップ",
           link: "/jp/news",
         },
+        megaMenu: [
+          {
+            title: "プレスリリース",
+            link: "/jp/news/tag/001-プレスリリース",
+            image:
+              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_01.png",
+            texts: [],
+          },
+          {
+            title: "ニュース",
+            link: "/jp/news/tag/010-ニュース",
+            image:
+              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_03_03.png",
+            texts: [],
+          },
+          {
+            title: "イベント・セミナー情報",
+            link: "/jp/news/tag/020-イベント-セミナー情報",
+            image:
+              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_03_01.png",
+            texts: [],
+          },
+          {
+            title: "オンライントレーニング・体験会",
+            link: "/jp/news/tag/030-オンライントレーニング-体験会",
+            image:
+              "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_03_02.png",
+            texts: [],
+          },
+        ],
       },
       {
         content: "IR",

@@ -9,7 +9,7 @@ export default function RootLayout({
   children,
   params: { locale },
 }: {
-  children: React.ReactNode;  
+  children: React.ReactNode;
   params: { locale: string };
 }): JSX.Element {
   return (

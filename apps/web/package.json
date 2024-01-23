@@ -9,6 +9,7 @@
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@mantine/core": "^7.4.1",
     "@mantine/hooks": "^7.4.1",
     "@repo/ui": "*",
@@ -17,7 +18,9 @@
     "next": "^14.0.4",
     "next-intl": "^3.4.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.49.3",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.4",
