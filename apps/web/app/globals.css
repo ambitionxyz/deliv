@@ -44,3 +44,7 @@ nav ul,
 ul {
   list-style: none;
 }
+
+p {
+  line-height: 2;
+}

@@ -1,0 +1,150 @@
+.topicPath {
+  padding: 16px 80px;
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    color: var(--color-black);
+    font-size: 11px;
+    line-height: 1.545;
+    padding-right: 15px;
+    position: relative;
+  }
+  span {
+    color: var(--color-black);
+    font-size: 11px;
+    line-height: 1.545;
+    position: relative;
+    padding-right: 15px;
+  }
+}
+
+.contents {
+  background-color: var(--color-white);
+  overflow: hidden;
+
+  .section {
+    padding: 160px max(80px, calc(50% - 620px));
+    padding-top: 110px;
+  }
+}
+
+.pageIntro {
+  align-items: flex-start;
+  display: flex;
+
+  .bdrTitle {
+    padding-right: 100px;
+    white-space: nowrap;
+  }
+}
+
+.bdrTitle {
+  color: var(--color-black);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+.bdrTitle:before {
+  background: var(--gradient-01);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 80px;
+}
+
+.pageIntroBody {
+  p {
+    line-height: 2;
+    color: var(--color-black);
+    font-size: 18px;
+    font-family: var(--font-jp);
+    font-weight: 500;
+  }
+
+  .disc {
+    line-height: 2;
+
+    li {
+      padding-left: 15px;
+      position: relative;
+      color: var(--color-black);
+      font-size: 18px;
+      font-family: var(--font-jp);
+      font-weight: 500;
+    }
+
+    li:before {
+      background-color: var(--color-b);
+      border-radius: 100%;
+      content: "";
+      display: block;
+      height: 8px;
+      left: 0;
+      position: absolute;
+      top: 8px;
+      width: 8px;
+    }
+  }
+}
+
+.pageIntroBody > * + * {
+  margin-top: 30px;
+}
+
+.leaderList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px 0;
+  justify-content: space-between;
+
+  li {
+    width: 48.3871%;
+
+    p {
+      line-height: 2;
+      color: var(--color-black);
+      font-size: 18px;
+      font-family: var(--font-jp);
+      font-weight: 500;
+    }
+
+    .leaderPhoto {
+      margin-bottom: 26px;
+
+      img:not(.autow) {
+        vertical-align: top;
+        width: 100%;
+      }
+    }
+
+    .leaderJob,
+    .leaderName {
+      font-weight: 700;
+      line-height: 2;
+      font-size: 18px;
+      color: var(--color-black);
+    }
+
+    .leaderName {
+      font-size: 21px;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+/* ///////////////////// */
+.pb0 {
+  padding-bottom: 0 !important;
+}
+
+.alignRight {
+  text-align: right;
+}

@@ -85,14 +85,14 @@ const HeaderRoot = () => {
         megaMenu: [
           {
             title: "経営理念",
-            link: "/jp/the-pledge",
+            megaHref: "/jp/the-pledge",
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_01.png",
             texts: [],
           },
           {
             title: "会社概要",
-            link: "/jp/company_profile",
+            megaHref: "/jp/company_profile",
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_02.png",
             desImage: [
@@ -109,14 +109,14 @@ const HeaderRoot = () => {
           },
           {
             title: "リーダーシップ",
-            link: "/jp/leadership",
+            megaHref: "/jp/leadership",
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_03.png",
             texts: [],
           },
           {
             title: "人材育成",
-            link: "/jp/employee-development-system",
+            megaHref: "/jp/employee-development-system",
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_04.png",
             texts: [],

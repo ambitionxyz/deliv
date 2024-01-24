@@ -1,0 +1,102 @@
+.topicPath {
+  padding: 16px 80px;
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    color: var(--color-black);
+    font-size: 11px;
+    line-height: 1.545;
+    padding-right: 15px;
+    position: relative;
+  }
+  span {
+    color: var(--color-black);
+    font-size: 11px;
+    line-height: 1.545;
+    position: relative;
+    padding-right: 15px;
+  }
+}
+
+.content {
+  background-color: var(--color-white);
+  overflow: hidden;
+
+  .section {
+    padding: 160px max(80px, calc(50% - 620px));
+    padding-top: 110px;
+  }
+
+  .narrow {
+    padding-left: max(80px, calc(50% - 480px));
+    padding-right: max(80px, calc(50% - 480px));
+  }
+
+  .pledgeFrame {
+    background: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/bg_pledge_frame.png)
+      0 0/100% auto no-repeat;
+    padding: 80px;
+    position: relative;
+    z-index: 1;
+
+    .pledgeTlte {
+      font-size: 42px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 36px;
+      text-align: center;
+    }
+
+    .pledgeTlteJP {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.333;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      position: relative;
+      text-align: center;
+    }
+
+    dl {
+      dt {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.5;
+        margin: 40px 0 30px;
+      }
+      dd {
+        line-height: 2;
+      }
+    }
+  }
+
+  .pledgeFrame:after {
+    background: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/bg_pledge_frame.png)
+      0 0/100% auto no-repeat;
+    bottom: 0;
+    content: "";
+    height: 100px;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    transform: rotate(180deg);
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+.pledgeLead {
+  margin-bottom: 80px;
+
+  p {
+    color: var(--color-black);
+    font-size: 18px;
+    font-family: var(--font-jp);
+    font-weight: 500;
+  }
+}
+.only-sp {
+  display: none;
+}
