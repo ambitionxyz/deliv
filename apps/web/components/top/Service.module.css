@@ -1,6 +1,6 @@
 .section {
   padding: 160px max(80px, calc(50% - 620px));
-  padding-bottom: 0;
+  padding-bottom: 0 !important;
 
   .sectionHeader {
     display: flex;
@@ -93,6 +93,56 @@
         right: 40px;
         top: auto;
         height: 9px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .section {
+    padding: 75px 20px 80px;
+
+    .sectionHeader {
+      display: block;
+      margin-bottom: 40px;
+
+      .sectionHeadding {
+        margin-bottom: 40px;
+        padding-right: 0;
+        width: 100%;
+
+        .sectionTitle {
+          font-size: 36px;
+        }
+
+        .sectionTitleJP {
+          font-size: 16px;
+          padding-left: 40px;
+          text-indent: -40px;
+        }
+
+        .sectionTitleJP:before {
+          width: 24px;
+        }
+      }
+    }
+
+    .topServiceList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      margin: 0 -20px;
+
+      li {
+        width: calc(50% - 1px);
+        height: 205px;
+
+        .topServiceListTitle {
+          bottom: 20px;
+          font-size: 13px;
+          left: 20px;
+          width: calc(100% - 70px);
+        }
       }
     }
   }

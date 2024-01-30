@@ -89,3 +89,58 @@
     }
   }
 }
+
+@media screen and (max-width: 960px) {
+  .topTheme {
+    padding: 75px 20px 80px;
+
+    .hs_cos_wrapper {
+      display: block;
+      margin-bottom: 40px;
+      .sectionHeadding {
+        margin-bottom: 40px;
+        padding-right: 0;
+        width: 100%;
+
+        .sectionTitle {
+          font-size: 30px;
+        }
+
+        .sectionTitleJP {
+          font-size: 16px;
+          padding-left: 40px;
+          text-indent: -40px;
+          font-weight: 600;
+        }
+
+        .sectionTitleJP:before {
+          width: 24px;
+        }
+      }
+
+      .sectionHeaderLead {
+        width: 100%;
+
+        p {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .linkListCol3 {
+      display: block;
+
+      li {
+        width: 100%;
+
+        .arrow02 {
+          height: 60px;
+        }
+      }
+
+      li + li {
+        margin-top: 10px;
+      }
+    }
+  }
+}

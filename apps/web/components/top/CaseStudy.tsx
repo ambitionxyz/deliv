@@ -83,7 +83,7 @@ const CaseStudy = () => {
                         </li>
                       );
                     })}
-                  </ul>
+                  </ul> 
                   <div className={c.caseTxt}>
                     <p>{caseStudy.description}</p>
                   </div>

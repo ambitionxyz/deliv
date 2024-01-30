@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useOs } from "@mantine/hooks";
 import Headerbackground from "../../../../components/headerBackground/HeaderBackground";
 
 import c from "./Page.module.css";
@@ -93,11 +94,17 @@ const Page = () => {
     [pathname]
   );
 
+  const os = useOs();
+
   return (
     <>
       <Headerbackground
         namePage="テクノロジー戦略の力をその手に"
-        image="https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_approach.png"
+        image={
+          os === "windows"
+            ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_approach.png"
+            : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_approach_sp.png"
+        }
         description="IT・データ戦略策定からシステムデリバリー、内製化支援まで"
         text={[
           "「戦略策定・システムデリバリー・内製化支援」が一体となった",
@@ -133,7 +140,13 @@ const Page = () => {
           </div>
         </div>
         <div className={c.sectionMV}>
-          <img src="https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/img_approach_01.png" />
+          <img
+            src={
+              os === "windows"
+                ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/img_approach_01.png"
+                : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/img_approach_01_sp.png"
+            }
+          />
         </div>
         <div className={c.section2}>
           <h2 className={c.bdrTitle}>新たな価値提供へのコミット</h2>
@@ -165,7 +178,13 @@ const Page = () => {
           </div>
         </div>
         <div className={c.sectionMV}>
-          <img src="https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/img_approach_03.png" />
+          <img
+            src={
+              os === "windows"
+                ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/img_approach_03.png"
+                : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/img_approach_03_sp.png"
+            }
+          />
         </div>
         <div className={c.section3}>
           <h2 className={c.bdrTitle}>企業価値を最大化するDLC Value</h2>

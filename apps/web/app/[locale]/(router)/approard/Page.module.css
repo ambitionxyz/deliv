@@ -19,6 +19,12 @@
   }
 }
 
+@media screen and (max-width: 960px) {
+  .topicPath {
+    display: none;
+  }
+}
+
 .contents {
   background-color: var(--color-white);
   overflow: hidden;
@@ -322,6 +328,152 @@
           transition: 0.3s;
 
           right: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .contents {
+    .section {
+      padding: 75px 20px 80px;
+
+      .pageIntro {
+        display: block;
+
+        .bdrTitle {
+          font-size: 18px;
+          margin-bottom: 40px;
+          padding-bottom: 24px;
+          padding-right: 0;
+          white-space: normal;
+        }
+
+        .pageIntroBody {
+          p {
+            font-size: 13px;
+          }
+
+          > * + * {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+
+    .sectionMV {
+    }
+
+    .section2 {
+      padding: 75px 20px 80px;
+
+      .bdrTitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+        padding-bottom: 24px;
+      }
+
+      .colBox {
+        display: block;
+
+        .colImage {
+          margin-bottom: 40px;
+          width: 100%;
+        }
+
+        .colText {
+          width: 100%;
+
+          .boldTitle {
+            font-size: 15px;
+            margin-bottom: 35px;
+          }
+
+          .listRender {
+            .itemRender {
+              .itemTitle {
+                display: block;
+                margin-bottom: 15px;
+
+                .icon {
+                  img {
+                    width: auto;
+                  }
+                }
+                .blueTitle {
+                  display: block;
+                  font-size: 15px;
+                  margin-right: 0;
+                }
+
+                .jpTitle {
+                  display: block;
+                  font-size: 15px;
+                }
+              }
+
+              .text {
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .section3 {
+      padding: 75px 20px 80px;
+      padding-bottom: 0 !important;
+
+      .bdrTitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+        padding-bottom: 24px;
+      }
+
+      .colBox {
+        display: block;
+
+        .colImage {
+          margin-bottom: 40px;
+          width: 100%;
+        }
+
+        .colText {
+          width: 100%;
+
+          .boldTitle {
+            font-size: 13px;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .section4 {
+      padding: 75px 20px 80px;
+
+      .bdrTitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+        padding-bottom: 24px;
+      }
+
+      .bdrTitle:before {
+        width: 60px;
+      }
+
+      .linkListCol3 {
+        display: block;
+
+        li {
+          width: 100%;
+          margin-bottom: 7px;
+
+          .arrow02 {
+            height: 60px;
+          }
         }
       }
     }

@@ -3,13 +3,20 @@
 import Link from "next/link";
 import classes from "./HeaderToor.module.css";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Burger } from "@mantine/core";
+import { useDisclosure, useOs } from "@mantine/hooks";
 
 const HeaderRoot = () => {
+  const [scrollDistance, setScrollDistance] = useState<boolean>(false);
   const [eHover, setEHover] = useState(null);
+  const [opened, { toggle }] = useDisclosure();
+  const [openedItemNavMobi, handlersItemNavMobi] = useDisclosure();
   const pathname = usePathname();
-
   const listItemsRefs = useRef<any>([]);
+  const os = useOs();
+
+  console.log({ os });
 
   const linkNar = useMemo(
     () => [
@@ -219,20 +226,62 @@ const HeaderRoot = () => {
     }
   };
 
+  const handleScroll = () => {
+    const scrollDistanceCurrent = window.scrollY;
+    console.log(scrollDistance);
+    if (scrollDistanceCurrent < 1600) {
+      setScrollDistance(false);
+    } else {
+      setScrollDistance(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className={classes.headerWrapper}>
+    <header
+      className={`${classes.headerWrapper} ${
+        scrollDistance || opened ? classes["headerWrapper--active"] : ""
+      }`}
+    >
       <div className={classes.container}>
         <div className={classes.headerInner}>
-          <div>
+          <div className={classes.siteLogo}>
             <Link href="/">
-              <img
-                src="https://www.deliv.co.jp/hubfs/corp_2022/files/images/logo_w.svg"
-                alt="DELIVERY CONSULTING"
-              ></img>
+              {scrollDistance || opened ? (
+                <img
+                  src="https://www.deliv.co.jp/hubfs/corp_2022/files/images/logo.svg"
+                  alt="DELIVERY CONSULTING"
+                ></img>
+              ) : (
+                <img
+                  src="https://www.deliv.co.jp/hubfs/corp_2022/files/images/logo_w.svg"
+                  alt="DELIVERY CONSULTING"
+                ></img>
+              )}
             </Link>
           </div>
-          <div className={classes.menuBtn}>MENU BTNS</div>
-          <div className={classes.globalNavi}>
+          <div className={classes.menuBtn}>
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              color={scrollDistance || opened ? "blue" : "white"}
+              aria-label="Toggle navigation"
+            />
+          </div>
+          <div
+            className={
+              opened
+                ? `${classes.globalNavi} ${classes.menuOpen}`
+                : classes.globalNavi
+            }
+          >
             <ul className={classes.primaryConts}>
               {linkNar &&
                 linkNar.length > 0 &&
@@ -242,7 +291,18 @@ const HeaderRoot = () => {
                       key={i}
                       className={classes.primaryCont}
                       onMouseOver={() => {
-                        handleMouseOver(i);
+                        if (os === "windows") {
+                          handleMouseOver(i);
+                        }
+                      }}
+                      onClick={() => {
+                        if (
+                          item.href == "" &&
+                          (os === "ios" || os === "android")
+                        ) {
+                          handlersItemNavMobi.toggle();
+                          handleMouseOver(i);
+                        }
                       }}
                       ref={(el) => (listItemsRefs.current[i] = el)}
                     >
@@ -251,12 +311,28 @@ const HeaderRoot = () => {
                           href={item.href}
                           className={classes.primaryContLink}
                         >
-                          <span className={classes.en}>{item.content}</span>
-                          <span className={classes.jp}>{item.description}</span>
+                          <span
+                            className={`${classes.en} ${
+                              scrollDistance ? classes["en--active"] : ""
+                            }`}
+                          >
+                            {item.content}
+                          </span>
+                          <span
+                            className={`${classes.jp} ${
+                              scrollDistance ? classes["jp--active"] : ""
+                            }`}
+                          >
+                            {item.description}
+                          </span>
                         </Link>
                       </div>
                       {item.href === "" && item.content === eHover && (
-                        <div className={classes.megaMenu}>
+                        <div
+                          className={`${classes.megaMenu} ${
+                            openedItemNavMobi ? classes.openMegaMenu : ""
+                          }`}
+                        >
                           <div className={classes.megaMenuHeader}>
                             <div className={classes.secondaryContLabel}>
                               <div className={classes.secondaryContLabelEN}>
@@ -390,12 +466,51 @@ const HeaderRoot = () => {
                   );
                 })}
             </ul>
+            <div className={classes.headerCNV}>
+              <ul>
+                <li className={classes.headerCNVBtn}>
+                  <div>
+                    <Link
+                      href=""
+                      className={`${classes.headerCNBtnLink} ${
+                        scrollDistance || opened
+                          ? classes["btnCNV--active"]
+                          : ""
+                      }`}
+                    >
+                      <div className={classes.en}>Recuit</div>
+                      <div className={classes.jp}>採用情報</div>
+                    </Link>
+                  </div>
+                </li>
+                <li className={classes.headerCNVBtn}>
+                  <div>
+                    <Link
+                      href=""
+                      className={`${classes.headerCNBtnLink} ${
+                        scrollDistance || opened
+                          ? classes["btnCNV--active"]
+                          : ""
+                      }`}
+                    >
+                      <div className={classes.en}>Contact</div>
+                      <div className={classes.jp}>採用情報</div>
+                    </Link>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className={classes.headerCNV}>
+          {/* <div className={classes.headerCNV}>
             <ul>
               <li className={classes.headerCNVBtn}>
                 <div>
-                  <Link href="" className={classes.headerCNBtnLink}>
+                  <Link
+                    href=""
+                    className={`${classes.headerCNBtnLink} ${
+                      scrollDistance ? classes["btnCNV--active"] : ""
+                    }`}
+                  >
                     <div className={classes.en}>Recuit</div>
                     <div className={classes.jp}>採用情報</div>
                   </Link>
@@ -403,14 +518,19 @@ const HeaderRoot = () => {
               </li>
               <li className={classes.headerCNVBtn}>
                 <div>
-                  <Link href="" className={classes.headerCNBtnLink}>
+                  <Link
+                    href=""
+                    className={`${classes.headerCNBtnLink} ${
+                      scrollDistance ? classes["btnCNV--active"] : ""
+                    }`}
+                  >
                     <div className={classes.en}>Contact</div>
                     <div className={classes.jp}>採用情報</div>
                   </Link>
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </header>

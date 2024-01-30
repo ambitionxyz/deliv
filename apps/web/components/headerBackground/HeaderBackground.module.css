@@ -83,3 +83,34 @@
     }
   }
 }
+
+@media screen and (max-width: 960px) {
+  .pageHeader {
+    min-height: 227px;
+
+    .heroLead {
+      background-image: none;
+      bottom: 40px;
+      padding: 0 20px;
+      top: 45px;
+
+      .heroLeadTitle {
+        margin-bottom: 15px;
+        font-size: 36px;
+      }
+
+      .heroLeadTitleJP {
+        font-size: 18px;
+        line-height: 1.777;
+      }
+
+      .heroLeadText {
+        margin-top: 40px;
+
+        p {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}

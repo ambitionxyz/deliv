@@ -161,7 +161,7 @@
   }
 
   .footBottom {
-    height: 175.91px;
+    /* height: 175.91px; */
     padding: 0 calc(50% - 620px);
 
     .footAside {
@@ -242,5 +242,169 @@
     font-size: 11px;
     padding: 2em 0;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .footerWrapper {
+    .footCNV {
+      height: 160px;
+
+      a {
+        line-height: 2;
+        font-size: 13px;
+
+        span {
+          font-size: 15px;
+
+          .br {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .footerCont {
+      display: block;
+      padding: 60px 20px;
+
+      .footHead {
+        margin-bottom: 60px;
+        width: 100%;
+
+        .companyLogo {
+          width: 160px;
+        }
+
+        .companyAddress {
+          font-size: 10px;
+          margin: 20px 0;
+        }
+      }
+
+      .footerNav {
+        display: block;
+        width: 100%;
+
+        .primaryConts {
+          padding-right: 0;
+          width: 100%;
+
+          .primaryCont {
+            padding-top: 0;
+
+            .primaryContLabel {
+              a {
+                display: flex;
+                padding: 20px 0;
+                position: relative;
+                text-decoration: none !important;
+
+                .en {
+                  font-size: 15px;
+                }
+
+                .jp {
+                  font-size: 13px;
+                }
+              }
+
+              a:before {
+                background-color: var(--color-b);
+                content: "";
+                display: block;
+                height: 1px;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                width: 12px;
+              }
+
+              a:after {
+                background-color: var(--color-b);
+                content: "";
+                display: block;
+                height: 12px;
+                position: absolute;
+                right: 5.5px;
+                top: calc(50% - 5.5px);
+                width: 1px;
+              }
+            }
+
+            .accBody {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .pagetop {
+        position: absolute;
+        right: 20px;
+        top: 60px;
+      }
+    }
+
+    .footBottom {
+      display: block;
+      padding: 40px 20px 0;
+
+      .footAside {
+        flex-direction: column-reverse;
+        padding: 20px 0;
+        width: 100%;
+
+        ul {
+          display: block;
+          padding: 0 20px;
+          width: 100%;
+
+          li {
+            font-size: 10px;
+          }
+        }
+
+        dl {
+          border-bottom: 1px solid #dee0e1;
+          display: block;
+          margin-bottom: 15px;
+          padding-bottom: 15px;
+          text-align: center;
+          width: 100%;
+
+          dt {
+            margin: 0 auto 5px;
+          }
+          dd {
+            font-size: 10px;
+            width: 100%;
+          }
+        }
+
+        .footAsideLeft {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 20px;
+
+          .footAsideContent {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            strong {
+              margin: 0 auto;
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+
+    .copyright {
+      font-size: 10px;
+      width: 100%;
+    }
   }
 }

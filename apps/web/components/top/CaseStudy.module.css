@@ -2,6 +2,7 @@
   padding: 160px max(80px, calc(50% - 620px));
   padding-right: 0;
   overflow: hidden;
+  background-color: var(--color-gray);
 
   .sectionHeader {
     display: flex;
@@ -167,6 +168,89 @@
       height: 9px;
       top: calc(50% - 4.5px);
       width: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .section {
+    padding: 75px 20px 80px;
+
+    .sectionHeader {
+      display: block;
+      margin-bottom: 40px;
+
+      .sectionHeadding {
+        margin-bottom: 40px;
+        padding-right: 0;
+        width: 100%;
+
+        .sectionTitle {
+          font-size: 30px;
+        }
+
+        .sectionTitleJP {
+          font-size: 16px;
+          padding-left: 40px;
+          text-indent: -40px;
+        }
+
+        .sectionTitleJP:before {
+          width: 24px;
+        }
+      }
+    }
+
+    .topCasestudyListWrap {
+      .slide {
+        margin-right: 20px;
+        width: 76vw;
+
+        .image {
+          margin-bottom: 24px;
+
+          .caseTitle {
+            margin-bottom: 20px;
+            font-size: 15px;
+          }
+
+          .caseTxt {
+            p {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+
+      .groupBtn {
+        .btn {
+          height: 44px;
+          width: 44px;
+        }
+        .left {
+          bottom: -90px;
+          left: 0;
+          position: absolute;
+        }
+
+        .right {
+          bottom: -90px;
+          left: 46px;
+          position: absolute;
+        }
+      }
+    }
+
+    .viewmore {
+      margin-top: 120px;
+      padding-right: 20px;
+      text-align: center;
+
+      a {
+        height: 50px;
+        width: 195px;
+        font-size: 13px;
+      }
     }
   }
 }

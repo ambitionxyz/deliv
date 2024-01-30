@@ -72,3 +72,49 @@
     }
   }
 }
+
+@media screen and (max-width: 960px) {
+  .section {
+    padding: 75px 20px 80px;
+
+    .sectionHeader {
+      display: block;
+      margin-bottom: 40px;
+
+      .sectionHeadding {
+        margin-bottom: 40px;
+        padding-right: 0;
+        width: 100%;
+
+        .sectionTitle {
+          font-size: 30px;
+        }
+
+        .sectionTitleJP {
+          font-size: 18px;
+          font-size: 16px;
+          padding-left: 40px;
+          text-indent: -40px;
+        }
+      }
+
+      .sectionHeaderLead {
+        width: 100%;
+
+        p {
+          font-size: 13px;
+        }
+
+        .sectionHeaderBtn {
+          margin-top: 18px;
+          text-align: left;
+        }
+      }
+    }
+
+    .topStrengthGraph {
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
+}
