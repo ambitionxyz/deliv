@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react";
 import WhatWeDoProvider, {
   WhatWeDoContext,
 } from "../../../../components/whatWeDo/WhatWeDoWrapper";
+import { useOs } from "@mantine/hooks";
 
 const listThemeCharater = [
   {
@@ -24,11 +25,15 @@ const Page = () => {
   const { setHeaderBackground, setThemeLead, setListThemeCharater, setThemes } =
     useContext(WhatWeDoContext);
 
+  const os = useOs();
+
   useEffect(() => {
     setHeaderBackground({
       namePage: "Emerging technology",
       image:
-        "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_theme_06.png",
+        os === "windows"
+          ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_theme_06.png"
+          : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_theme_06_sp.png",
       description: "エマージングテクノロジー",
     });
 
@@ -39,7 +44,7 @@ const Page = () => {
     setListThemeCharater(listThemeCharater);
 
     setThemes("モダナイゼーション");
-  }, []);
+  }, [os]);
 
   return <WhatWeDoProvider.Content />;
 };

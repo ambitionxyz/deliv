@@ -19,6 +19,12 @@
   }
 }
 
+@media screen and (max-width: 960px) {
+  .topicPath {
+    display: none;
+  }
+}
+
 .content {
   background-color: var(--color-white);
   overflow: hidden;
@@ -79,6 +85,50 @@
 
     .coloredColumn + .coloredColumn {
       margin-top: 80px;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .content {
+    .section {
+      padding: 75px 20px 80px;
+
+      .coloredColumn {
+        display: block;
+        padding: 40px 20px;
+
+        .columnBody {
+          width: 100%;
+
+          .iconTitle {
+            font-size: 15px;
+            margin-bottom: 20px;
+
+            .icon {
+              width: 65px;
+            }
+
+            .txt {
+              width: calc(100% - 65px);
+              font-size: 15px;
+            }
+          }
+
+          p {
+            font-size: 13px;
+            font-weight: 500;
+          }
+        }
+
+        .columnImage {
+          margin-top: 40px;
+          width: 100%;
+        }
+      }
+    }
+    .section:first-child {
+      padding-top: 80px;
     }
   }
 }

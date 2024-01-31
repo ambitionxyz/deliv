@@ -56,7 +56,7 @@
         padding-top: 20px;
         padding-left: 40px;
         margin-bottom: 14px;
-        margin-left: 17px;
+        margin-left: -20px;
 
         .primaryCont {
           padding: 0 20px;
@@ -84,7 +84,7 @@
               .jp {
                 white-space: nowrap;
                 display: block;
-                font-size: 0.8rem;
+                font-size: 8px;
                 line-height: 1.545;
                 margin-top: 8px;
               }
@@ -267,6 +267,13 @@
                   position: absolute;
                   top: 9px;
                   width: 12px;
+                }
+              }
+
+              @media screen and (max-width: 1200px) {
+                .secondaryContLower {
+                  border: 0;
+                  padding: 0;
                 }
               }
             }

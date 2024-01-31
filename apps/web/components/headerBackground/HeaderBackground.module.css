@@ -90,13 +90,12 @@
 
     .heroLead {
       background-image: none;
-      bottom: 40px;
       padding: 0 20px;
-      top: 45px;
+      top: 115px;
 
       .heroLeadTitle {
         margin-bottom: 15px;
-        font-size: 36px;
+        font-size: 30px;
       }
 
       .heroLeadTitleJP {
@@ -109,6 +108,30 @@
 
         p {
           font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .pageAnchor {
+    margin: 0;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+
+      li {
+        width: 33.3333%;
+
+        a {
+          font-size: 13px;
+          align-items: center;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          padding: 8px 5px;
+          text-align: center;
         }
       }
     }

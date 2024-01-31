@@ -5,7 +5,8 @@ import Link from "next/link";
 import c from "./Layout.module.css";
 import Headerbackground from "../../../../components/headerBackground/HeaderBackground";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import { useOs } from "@mantine/hooks";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [restBrg, setRestBgr] = useState<{
@@ -16,6 +17,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     description: "",
   });
   const pathName = usePathname();
+  const os = useOs();
 
   useEffect(() => {
     console.log(pathName);
@@ -23,7 +25,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       case "/jp/sustainability/diversityinclusion":
         setRestBgr({
           image:
-            "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_586371345%20(1)-2.jpeg",
+            os === "windows"
+              ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_586371345%20(1)-2.jpeg"
+              : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_586371345%20(2).jpeg",
           description: "サステナビリティ",
         });
         break;
@@ -61,28 +65,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       default:
         setRestBgr({
           image:
-            "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_577490154-1.jpeg",
+            os === "windows"
+              ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_577490154-1.jpeg"
+              : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_577490154%20(1).jpeg",
           description: "サステナビリティ",
         });
     }
-  }, [pathName]);
-
-  // useEffect(() => {
-  //   const handleRouteChange = () => {
-  //     sessionStorage.setItem("scrollPosition", window.scrollY.toString());
-  //   };
-
-  //   router.events.on("routeChangeComplete", handleRouteChange);
-
-  //   const storedScrollPosition = sessionStorage.getItem("scrollPosition");
-  //   if (storedScrollPosition) {
-  //     window.scrollTo(0, parseInt(storedScrollPosition, 10));
-  //   }
-
-  //   return () => {
-  //     router.events.off("routeChangeComplete", handleRouteChange);
-  //   };
-  // }, [router.events]);
+  }, [pathName, os]);
 
   return (
     <>

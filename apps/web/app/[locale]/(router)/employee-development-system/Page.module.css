@@ -19,6 +19,12 @@
   }
 }
 
+@media screen and (max-width: 960px) {
+  .topicPath {
+    display: none;
+  }
+}
+
 .contents {
   background-color: var(--color-white);
   overflow: hidden;
@@ -123,6 +129,65 @@
   }
 }
 
+@media screen and (max-width: 960px) {
+  .contents {
+    .section {
+      padding: 75px 20px 80px;
+
+      .pageIntro {
+        display: block;
+      }
+
+      .coloredColumn {
+        display: block;
+        padding: 40px 20px;
+
+        .columnBody {
+          width: 100%;
+
+          .boldTitle {
+            font-size: 15px;
+            margin-bottom: 35px;
+          }
+
+          .disc {
+            li {
+              font-size: 13px;
+            }
+          }
+
+          .columnImage {
+            margin-top: 40px;
+            width: 100%;
+          }
+
+          .only-sp {
+            display: block;
+          }
+
+          .iconTitle {
+            font-size: 15px;
+            margin-bottom: 20px;
+          }
+        }
+
+        .columnImage {
+          margin-top: 40px;
+          width: 100%;
+        }
+
+        .columnImageNone {
+          display: none;
+        }
+      }
+    }
+
+    .section:first-child {
+      padding-top: 80px;
+    }
+  }
+}
+
 .bdrTitle {
   font-size: 24px;
   font-weight: 700;
@@ -144,6 +209,30 @@
   width: 80px;
 }
 
+@media screen and (max-width: 960px) {
+  .pageIntro {
+    display: block;
+
+    .bdrTitle {
+      margin-bottom: 40px;
+      padding-right: 0;
+      white-space: normal;
+      font-size: 18px;
+      padding-bottom: 24px;
+    }
+
+    .bdrTitle:before {
+      width: 60px;
+    }
+
+    .pageIntroBody {
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
 .pageIntroBody {
   p {
     font-size: 18px;
@@ -156,7 +245,7 @@
 .iconTitle {
   align-items: center;
   display: flex;
-  font-size: 2.1rem;
+  font-size: 21px;
   font-weight: 700;
   line-height: 2;
   margin-bottom: 30px;

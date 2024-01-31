@@ -10,14 +10,12 @@ import { useDisclosure, useOs } from "@mantine/hooks";
 const HeaderRoot = () => {
   const [scrollDistance, setScrollDistance] = useState<boolean>(false);
   const [eHover, setEHover] = useState(null);
-  const [opened, { toggle }] = useDisclosure();
+
+  const [opened, { toggle, close }] = useDisclosure();
   const [openedItemNavMobi, handlersItemNavMobi] = useDisclosure();
   const pathname = usePathname();
   const listItemsRefs = useRef<any>([]);
   const os = useOs();
-
-  console.log({ os });
-
   const linkNar = useMemo(
     () => [
       {
@@ -243,6 +241,10 @@ const HeaderRoot = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    close();
+  }, [pathname]);
 
   return (
     <header

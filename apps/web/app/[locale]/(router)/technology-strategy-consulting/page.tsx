@@ -1,6 +1,7 @@
 "use client";
 
 import { useContext, useEffect } from "react";
+import { useOs } from "@mantine/hooks";
 import WhatWeDoProvider, {
   WhatWeDoContext,
 } from "../../../../components/whatWeDo/WhatWeDoWrapper";
@@ -33,11 +34,15 @@ const Page = () => {
   const { setHeaderBackground, setThemeLead, setListThemeCharater, setThemes } =
     useContext(WhatWeDoContext);
 
+  const os = useOs();
+
   useEffect(() => {
     setHeaderBackground({
       namePage: "Technology strategy",
       image:
-        "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_theme_02.png",
+        os === "windows"
+          ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_theme_02.png"
+          : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_theme_02_sp.png",
       description: "テクノロジー戦略",
     });
 
@@ -48,7 +53,7 @@ const Page = () => {
     setListThemeCharater(listThemeCharater);
 
     setThemes("テクノロジー戦略");
-  }, []);
+  }, [os]);
 
   return <WhatWeDoProvider.Content />;
 };

@@ -19,6 +19,12 @@
   }
 }
 
+@media screen and (max-width: 960px) {
+  .topicPath {
+    display: none;
+  }
+}
+
 .content {
   background-color: var(--color-white);
   overflow: hidden;
@@ -97,6 +103,57 @@
     font-weight: 500;
   }
 }
+
 .only-sp {
   display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .content {
+    .section {
+      padding: 75px 20px 80px;
+
+      .pledgeLead {
+        margin-bottom: 40px;
+
+        p {
+          font-size: 13px;
+        }
+      }
+
+      .pledgeFrame {
+        padding: 40px 20px;
+        background-image: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/bg_pledge_frame_sp.png);
+
+        .pledgeTlte {
+          font-size: 24px;
+          margin-bottom: 26px;
+        }
+
+        .pledgeTlteJP {
+          font-size: 15px;
+          line-height: 2;
+          padding-bottom: 24px;
+
+          .only-sp {
+            display: block;
+          }
+        }
+
+        dl {
+          dt {
+            font-size: 15px;
+            margin-bottom: 15px;
+          }
+          dd {
+            font-size: 13px;
+          }
+        }
+      }
+
+      .pledgeFrame:after {
+        background-image: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/bg_pledge_frame_sp.png);
+      }
+    }
+  }
 }

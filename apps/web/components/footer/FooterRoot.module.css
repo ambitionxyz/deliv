@@ -94,14 +94,14 @@
 
               .jp {
                 color: var(--color-b);
-                font-size: 1.1rem;
+                font-size: 11px;
               }
             }
           }
 
           .accBody {
             .secondaryConts {
-              font-size: 1.1rem;
+              font-size: 11px;
               margin-top: 30px;
 
               .secondaryCont {
@@ -179,7 +179,7 @@
 
       ul li {
         display: flex;
-        font-size: 1.3rem;
+        font-size: 13px;
         line-height: 20px;
         margin-right: 40px;
         padding-left: 20px;

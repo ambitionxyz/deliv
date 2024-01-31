@@ -1,8 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import Headerbackground from "../../../../components/headerBackground/HeaderBackground";
 
 import c from "./Page.module.css";
 import Recuit from "../../../../components/top/Recruit";
+import { useOs } from "@mantine/hooks";
 
 const listLeader = [
   {
@@ -26,11 +29,16 @@ const listLeader = [
 ];
 
 const Page = () => {
+  const os = useOs();
   return (
     <>
       <Headerbackground
         namePage="Leadership"
-        image="https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_leadership.png"
+        image={
+          os === "windows"
+            ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_leadership.png"
+            : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_leadership_sp.png"
+        }
         description="リーダーシップ"
       />
 

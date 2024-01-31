@@ -1,16 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import Headerbackground from "../../../../components/headerBackground/HeaderBackground";
 
 import c from "./Page.module.css";
 import Recuit from "../../../../components/top/Recruit";
+import { useOs } from "@mantine/hooks";
 
 const listRender = [{ title: "商号", description: "" }];
 const Page = () => {
+  const os = useOs();
   return (
     <>
       <Headerbackground
         namePage="Company profile"
-        image="https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_company.png"
+        image={
+          os === "windows"
+            ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_company.png"
+            : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_company_sp.png"
+        }
         description="会社概要"
         anChor={[
           {

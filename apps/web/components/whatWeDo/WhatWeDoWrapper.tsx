@@ -307,7 +307,7 @@ function Content() {
 
                 <div className={c["form-columns-1"]}>
                   <div className={c.checkBox}>
-                    <Checkbox defaultChecked label="同意する" />
+                    <Checkbox defaultChecked size="xs" label="同意する" />
                   </div>
                 </div>
 

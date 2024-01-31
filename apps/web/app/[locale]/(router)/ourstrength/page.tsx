@@ -1,13 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import Headerbackground from "../../../../components/headerBackground/HeaderBackground";
 
 import c from "./Page.module.css";
+import { useOs } from "@mantine/hooks";
 const Page = () => {
+  const os = useOs();
+
   return (
     <>
       <Headerbackground
         namePage="先進と成熟の融合"
-        image="https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_strength.png"
+        image={
+          os === "windows"
+            ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_strength.png"
+            : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_strength_sp.png"
+        }
         description="方法論とアーキテクチャ志向、メタ思考力"
         text={[
           "ユーザー要件の実現、生産性と品質の向上、変化への対応力、イノベーションなど、",

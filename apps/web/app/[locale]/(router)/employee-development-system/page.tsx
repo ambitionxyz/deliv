@@ -1,15 +1,24 @@
+"use client";
+
 import Link from "next/link";
+import { useOs } from "@mantine/hooks";
+
 import Headerbackground from "../../../../components/headerBackground/HeaderBackground";
 import Recuit from "../../../../components/top/Recruit";
 
 import c from "./Page.module.css";
 
 const Page = () => {
+  const os = useOs();
   return (
     <>
       <Headerbackground
         namePage="DLC ACADEMY"
-        image="https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_training.png"
+        image={
+          os === "windows"
+            ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_training.png"
+            : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_training_sp.png"
+        }
         description="コンサルタント育成のプラットフォーム"
       />
       <div className={c.topicPath}>
@@ -100,7 +109,7 @@ const Page = () => {
                 </li>
               </ul>
             </div>
-            <div className={c.columnImage}>
+            <div className={`${c.columnImage} ${c.columnImageNone}`}>
               <img src="https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_training_01.png" />
             </div>
           </div>

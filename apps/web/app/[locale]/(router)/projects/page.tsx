@@ -1,14 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useQuery } from "react-query";
+import { useOs } from "@mantine/hooks";
 
-import ROUTER from "../../../../api/Router";
 import { fetchDataProjects } from "../../../../api/Project";
-
 import Headerbackground from "../../../../components/headerBackground/HeaderBackground";
 import c from "./Page.module.css";
-import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import Recuit from "../../../../components/top/Recruit";
 
@@ -23,13 +20,17 @@ const Page = () => {
     fetchData();
   }, []);
 
-  console.log(data);
+  const os = useOs();
 
   return (
     <>
       <Headerbackground
         namePage="Project"
-        image="https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_projects.png"
+        image={
+          os === "windows"
+            ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_projects.png"
+            : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_projects_sp.png"
+        }
         description="案件事例"
       />
       <div className={c.topicPath}>
