@@ -227,6 +227,7 @@ const HeaderRoot = () => {
 
   const handleScroll = () => {
     const scrollDistanceCurrent = window.scrollY;
+
     if (scrollDistanceCurrent < 1600) {
       setScrollDistance(false);
     } else {

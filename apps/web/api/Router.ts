@@ -1,5 +1,11 @@
-const HOST = "http://localhost:1337";
+// import dotenv from "dotenv";
 
+// Load biến môi trường từ file .env
+// dotenv.config();
+
+// const HOST = process.env.HOST || "http://localhost:1337";
+
+const HOST = "https://deliv-api-production.up.railway.app";
 const API_PRODUCT = {
   GET_PRODUCTS: `${HOST}/api/projects`,
 };
