@@ -147,28 +147,28 @@ const HeaderRoot = () => {
         megaMenu: [
           {
             title: "プレスリリース",
-            link: "/jp/news/tag/001-プレスリリース",
+            megaHref: "/jp/news/tag/001-プレスリリース",
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_01.png",
             texts: [],
           },
           {
             title: "ニュース",
-            link: "/jp/news/tag/010-ニュース",
+            megaHref: "/jp/news/tag/010-ニュース",
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_03_03.png",
             texts: [],
           },
           {
             title: "イベント・セミナー情報",
-            link: "/jp/news/tag/020-イベント-セミナー情報",
+            megaHref: "/jp/news/tag/020-イベント-セミナー情報",
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_03_01.png",
             texts: [],
           },
           {
             title: "オンライントレーニング・体験会",
-            link: "/jp/news/tag/030-オンライントレーニング-体験会",
+            megaHref: "/jp/news/tag/030-オンライントレーニング-体験会",
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_03_02.png",
             texts: [],
@@ -186,6 +186,12 @@ const HeaderRoot = () => {
         href: "",
         megaMenu: [
           {
+            title: "IRニュース",
+            image: null,
+            megaHref: "/jp/ir/news",
+            texts: [],
+          },
+          {
             title: "主なテーマ",
             image: null,
             texts: [
@@ -202,11 +208,6 @@ const HeaderRoot = () => {
                 link: "/jp/technology-strategy-consulting",
               },
             ],
-          },
-          {
-            title: "主なテーマ",
-            image: null,
-            texts: [],
           },
         ],
       },
@@ -226,7 +227,6 @@ const HeaderRoot = () => {
 
   const handleScroll = () => {
     const scrollDistanceCurrent = window.scrollY;
-    console.log(scrollDistance);
     if (scrollDistanceCurrent < 1600) {
       setScrollDistance(false);
     } else {

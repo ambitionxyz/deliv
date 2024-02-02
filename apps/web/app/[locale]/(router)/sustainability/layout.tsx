@@ -20,7 +20,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const os = useOs();
 
   useEffect(() => {
-    console.log(pathName);
     switch (pathName) {
       case "/jp/sustainability/diversityinclusion":
         setRestBgr({
