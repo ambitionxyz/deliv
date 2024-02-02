@@ -5,6 +5,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "start": "turbo dev --filter web",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "dev:webs": "turbo dev --filter web",
     "dev:docs": "turbo dev --filter docs"
