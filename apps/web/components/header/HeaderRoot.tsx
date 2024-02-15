@@ -300,7 +300,7 @@ const HeaderRoot = () => {
                       }}
                       onClick={() => {
                         if (
-                          item.href == "" &&
+                          item.href === "" &&
                           (os === "ios" || os === "android")
                         ) {
                           handlersItemNavMobi.toggle();
@@ -309,7 +309,13 @@ const HeaderRoot = () => {
                       }}
                       ref={(el) => (listItemsRefs.current[i] = el)}
                     >
-                      <div className={classes.primaryContLabel}>
+                      <div
+                        className={
+                          item.href !== "" && (os === "ios" || os === "android")
+                            ? classes.primaryContLabel
+                            : `${classes.primaryContLabel} ${classes.acc}`
+                        }
+                      >
                         <Link
                           href={item.href}
                           className={classes.primaryContLink}

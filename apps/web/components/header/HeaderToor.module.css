@@ -90,6 +90,9 @@
               }
             }
           }
+
+          .acc {
+          }
         }
 
         .primaryCont:hover {
@@ -345,6 +348,24 @@
               .primaryContLink {
                 height: auto;
               }
+            }
+
+            .primaryContLabel:not(.acc) a:before {
+              background-color: transparent !important;
+              border-right: 1px solid var(--color-b);
+              border-top: 1px solid var(--color-b);
+              content: "";
+              display: block;
+              height: 8px;
+              position: absolute;
+              right: 3px;
+              top: 26px;
+              transform: rotate(45deg);
+              width: 8px;
+            }
+
+            .primaryContLabel:not(.acc) a::after {
+              display: none !important;
             }
 
             .megaMenu {

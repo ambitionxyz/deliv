@@ -26,7 +26,6 @@ const Page = () => {
     useContext(WhatWeDoContext);
 
   const os = useOs();
-
   useEffect(() => {
     setHeaderBackground({
       namePage: "AI & Analytics",
@@ -44,7 +43,7 @@ const Page = () => {
     setListThemeCharater(listThemeCharater);
 
     setThemes("AI＆アナリティクス");
-  }, []);
+  }, [os]);
 
   return <WhatWeDoProvider.Content />;
 };
