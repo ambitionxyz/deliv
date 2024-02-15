@@ -149,7 +149,6 @@ const Page = () => {
                       alt="Get Adobe Reader"
                       width="158"
                       height="39"
-                      border="0"
                     />
                   </a>
                 </p>
