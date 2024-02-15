@@ -209,6 +209,12 @@ const HeaderRoot = () => {
               },
             ],
           },
+          {
+            title: "財務ハイライト",
+            image: null,
+            megaHref: "/jp/ir/highlight",
+            texts: [],
+          },
         ],
       },
     ],

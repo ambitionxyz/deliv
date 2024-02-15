@@ -1,0 +1,139 @@
+.topicPath {
+  padding: 16px 80px;
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    color: var(--color-black);
+    font-size: 11px;
+    line-height: 1.545;
+    padding-right: 15px;
+    position: relative;
+  }
+  span {
+    color: var(--color-black);
+    font-size: 11px;
+    line-height: 1.545;
+    position: relative;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .topicPath {
+    display: none;
+  }
+}
+
+.contents,
+.section {
+  background-color: var(--color-white);
+}
+
+.contents {
+  overflow: hidden;
+}
+
+.section {
+  padding: 160px max(80px, calc(50% - 620px));
+}
+
+.section:first-child,
+.topicPath ~ .contents .section:first-child {
+  padding-top: 110px;
+}
+
+.irNews {
+}
+
+.qirContent_table {
+  table {
+    border-style: solid;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+    margin-top: 10px;
+    border-color: #c7d5de;
+
+    thead {
+      th {
+        width: 17%;
+        background-color: #758fa0;
+        color: #fff;
+        padding: 6px 3px;
+        text-align: center;
+        font-weight: normal;
+      }
+    }
+
+    tbody {
+      th {
+        background-color: #758fa0;
+        color: #fff;
+        border-color: #c7d5de;
+        padding: 10px 4px;
+        text-align: center;
+        white-space: nowrap;
+      }
+    }
+
+    th {
+      border: solid #c7d5de;
+      border-top-width: 0;
+      border-left-width: 0;
+      border-right-width: 1px;
+      border-bottom-width: 1px;
+      vertical-align: middle;
+    }
+  }
+
+  tbody td {
+    white-space: nowrap;
+  }
+
+  td {
+    border: solid;
+    border-color: #c7d5de;
+    text-align: right;
+    padding: 10px 4px;
+    word-wrap: break-word;
+    word-break: break-all;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    vertical-align: middle;
+
+    span {
+      color: var(--color-black);
+    }
+  }
+}
+
+.qir * {
+  line-height: normal;
+  box-sizing: border-box;
+}
+
+.qirArea {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.qirSection_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.qirContent {
+  width: 48%;
+}
+
+.qirContent_table_thead_row {
+}
