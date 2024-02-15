@@ -1,3 +1,5 @@
 const Intro = () => {
-  return <div className={c.pageIntro}></div>;
+  return <div>sus</div>;
 };
+
+export default Intro;
