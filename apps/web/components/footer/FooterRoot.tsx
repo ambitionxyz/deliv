@@ -250,7 +250,10 @@ const FooterRoot = () => {
                               {navItem.childlinks.length > 0 && (
                                 <ul className={c.secondaryContLower}>
                                   {navItem.childlinks.map(
-                                    (childLink, indexChildLink) => {
+                                    (
+                                      childLink: any,
+                                      indexChildLink: number
+                                    ) => {
                                       return (
                                         <li key={indexChildLink}>
                                           <Link href={childLink.childHref}>
