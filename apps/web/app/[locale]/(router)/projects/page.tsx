@@ -43,7 +43,7 @@ const Page = () => {
           <div className={c.projectIndexList}>
             {data &&
               data.length > 0 &&
-              data.map((item, index) => {
+              data.map((item: any, index: number) => {
                 return (
                   <div className={c.caseBox} key={index}>
                     <div className={c.caseImg}>
@@ -53,7 +53,7 @@ const Page = () => {
                       <div className={c.caseTitle}>{item.attributes.title}</div>
                       <ul className={c.caseCats}>
                         {item.attributes.themes.content.map(
-                          (theme, indexTheme) => {
+                          (theme: any, indexTheme: number) => {
                             return (
                               <li key={indexTheme} className={c["cat-theme"]}>
                                 {theme}
@@ -64,7 +64,7 @@ const Page = () => {
                       </ul>
                       <div className={c.caseTxt}>
                         {item.attributes.descriptions.content.map(
-                          (des, indexDes) => {
+                          (des: any, indexDes: number) => {
                             return <p key={indexDes}>{des}</p>;
                           }
                         )}
