@@ -1,3 +1,7 @@
+.footerWrapper * {
+  color: var(--color-white);
+}
+
 .footerWrapper {
   background-color: var(--color-white);
   position: relative;

@@ -4,8 +4,11 @@ import { useEffect, useRef } from "react";
 import c from "./Mv.module.css";
 import Link from "next/link";
 import { MoveRight, MoveDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 const Mv = () => {
   const videoRef = useRef<any>(null);
+
+  const t = useTranslations("MV");
 
   useEffect(() => {
     if (videoRef && videoRef.current) {
@@ -27,24 +30,22 @@ const Mv = () => {
       </div>
       <div className={c.heroBody}>
         <h1 className={c.heroTagline}>
-          テクノロジーの力で
+          {t("WithThePowerOfTechnology")}
           <br />
-          ビジネスを変革する
+          {t("TransformYourBusiness")}
         </h1>
         <p className={c.en}>Trusted Digital Transformation Partner</p>
       </div>
       <div className={c.heroLead}>
-        <h2 className={c.heroLeadTitle}>テクノロジー戦略の力をその手に</h2>
-        <div className={c.heroLeadTitleJP}>
-          IT・データ戦略策定からシステムデリバリー、内製化支援まで
-        </div>
+        <h2 className={c.heroLeadTitle}> {t("PowerOfTechnology")}</h2>
+        <div className={c.heroLeadTitleJP}>{t("StrategyFormulation")}</div>
         <div className={c.heroLeadText}>
           <p>
-            「戦略策定・システムデリバリー・内製化支援」が一体となった
+            {t("ProductionSupport")}
             <br />
-            テクノロジーコンサルティングで、企業のビジネスモデルの変革、
+            {t("TechnologyConsulting")}
             <br />
-            新規サービス開発を実現します。
+            {t("Realize")}
           </p>
         </div>
         <div className={c.heroLeadBtn}>

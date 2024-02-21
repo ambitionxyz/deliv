@@ -4,8 +4,10 @@ import Link from "next/link";
 import NewsProvider from "../../../../../components/news/NewWrapper";
 
 import c from "./Page.module.css";
+import { useLocale } from "next-intl";
 
 const Page = () => {
+  const locale = useLocale();
   return (
     <NewsProvider.Content>
       <div className={c.contents}>
@@ -99,12 +101,12 @@ const Page = () => {
         </div>
         <div className={c.pagination}>
           <div className={c.viewmore}>
-            <Link href="/jp/news" className={c.arrow02}>
+            <Link href={`/${locale}/news`} className={c.arrow02}>
               Back
             </Link>
           </div>
           <div className={c.linkPrev}>
-            <Link href="/jp/news/news010-030-16">Prev</Link>
+            <Link href={`/${locale}/news/news010-030-16`}>Prev</Link>
           </div>
         </div>
       </div>

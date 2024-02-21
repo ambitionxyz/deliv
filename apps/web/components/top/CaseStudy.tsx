@@ -3,10 +3,13 @@ import c from "./CaseStudy.module.css";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 //fetch data
 const CaseStudy = () => {
   const pathname = usePathname();
+
+  const t = useTranslations("CaseStudy");
 
   const listCaseStudy = useMemo(
     () => [
@@ -62,8 +65,8 @@ const CaseStudy = () => {
     <div className={c.section}>
       <div className={c.sectionHeader}>
         <div className={c.sectionHeadding}>
-          <h2 className={c.sectionTitle}>変革の足跡</h2>
-          <div className={c.sectionTitleJP}>プロジェクト事例</div>
+          <h2 className={c.sectionTitle}>{t("Footprints")}</h2>
+          <div className={c.sectionTitleJP}>{t("ProjectExample")}</div>
         </div>
       </div>
 
@@ -83,7 +86,7 @@ const CaseStudy = () => {
                         </li>
                       );
                     })}
-                  </ul> 
+                  </ul>
                   <div className={c.caseTxt}>
                     <p>{caseStudy.description}</p>
                   </div>

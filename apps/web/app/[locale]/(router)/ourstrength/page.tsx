@@ -5,35 +5,33 @@ import Headerbackground from "../../../../components/headerBackground/HeaderBack
 
 import c from "./Page.module.css";
 import { useOs } from "@mantine/hooks";
+import { useTranslations } from "next-intl";
 const Page = () => {
   const os = useOs();
+  const t = useTranslations("Index");
 
   return (
     <>
       <Headerbackground
-        namePage="先進と成熟の融合"
+        namePage={t("Fusion")}
         image={
           os === "windows"
             ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_strength.png"
             : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_strength_sp.png"
         }
-        description="方法論とアーキテクチャ志向、メタ思考力"
-        text={[
-          "ユーザー要件の実現、生産性と品質の向上、変化への対応力、イノベーションなど、",
-          "テクノロジー導入やシステム構築における多様な課題に対する我々の思想が、",
-          "アーキテクチャ志向、独自のシステム開発方法論、そしてメタ思考力です。",
-        ]}
+        description={t("Methodology")}
+        text={[t("Realizing"), t("OurThoughtsOn"), t("Architecture")]}
         anChor={[
           {
-            label: "アーキテクチャ志向",
+            label: t("ArchitectureOriented"),
             href: "/jp",
           },
           {
-            label: "方法論",
+            label: t("Methodology2"),
             href: "/jp",
           },
           {
-            label: "メタ思考力",
+            label: t("Meta"),
             href: "/jp",
           },
         ]}
@@ -41,9 +39,9 @@ const Page = () => {
       <div className={c.topicPath}>
         <Link href="/jp">HOME</Link>
         <span> + </span>
-        <span>事業概要</span>
+        <span>{t("Business")}</span>
         <span>+</span>
-        <span>コンサルティング </span>
+        <span>{t("Consulting")} </span>
       </div>
       <div className={c.content}>
         <div className={c.section}>

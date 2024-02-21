@@ -6,10 +6,29 @@ import Headerbackground from "../../../../components/headerBackground/HeaderBack
 import c from "./Page.module.css";
 import Recuit from "../../../../components/top/Recruit";
 import { useOs } from "@mantine/hooks";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+import { fetchDataCompanys } from "../../../../api/Project";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 const listRender = [{ title: "商号", description: "" }];
 const Page = () => {
+  const [dataCompany, setDataCompany] = useState<any>();
   const os = useOs();
+  const t = useTranslations("Index");
+  const locale = useLocale();
+
+  useEffect(() => {
+    const fetData = async () => {
+      const res = await fetchDataCompanys(locale);
+      const data = res.data[0].attributes;
+
+      setDataCompany(data);
+    };
+
+    fetData();
+  }, [locale]);
+
   return (
     <>
       <Headerbackground
@@ -19,18 +38,18 @@ const Page = () => {
             ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_company.png"
             : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_company_sp.png"
         }
-        description="会社概要"
+        description={t("CompanyProfile")}
         anChor={[
           {
-            label: "会社概要",
+            label: t("CompanyProfile"),
             href: "/jp/company_profile#cp01",
           },
           {
-            label: "アクセスマップ",
+            label: t("AccessMap"),
             href: "https://www.google.com/maps/place/%E6%9D%B1%E4%BA%AC%E3%83%9F%E3%83%83%E3%83%89%E3%82%BF%E3%82%A6%E3%83%B3/@35.6659803,139.7308747,15z/data=!4m6!3m5!1s0x60188b78922e6353:0xeb3e39dbe18da4d6!8m2!3d35.6659803!4d139.7308747!16zL20vMDd3N3Zs?hl=ja&entry=ttu",
           },
           {
-            label: "沿革",
+            label: t("History"),
             href: "/jp/company_profile#cp03",
           },
         ]}
@@ -38,85 +57,64 @@ const Page = () => {
       <div className={c.topicPath}>
         <Link href="/jp">HOME</Link>
         <span> + </span>
-        <span>事業概要</span>
+        <span>{t("Business")}</span>
         <span>+</span>
-        <span>コンサルティング </span>
+        <span>{t("Consulting")} </span>
       </div>
       <div className={c.contents}>
         <div className={`${c.section} ${c.pb0}`}>
-          <h2 className={c.bdrTitle}>会社概要</h2>
+          <h2 className={c.bdrTitle}>{t("CompanyProfile")}</h2>
           <div className={c.companyOutline}>
             <dl>
-              <dt>商号</dt>
+              <dt>{t("TradeName")}</dt>
               <dd>
-                <p>
-                  株式会社デリバリーコンサルティング（Delivery Consulting Inc.)
-                </p>
+                <p>{dataCompany?.name}</p>
               </dd>
-              <dt>事業内容</dt>
+              <dt>{t("BusinessContent")}</dt>
               <dd>
-                <p>テクノロジーコンサルティング</p>
+                <p>{dataCompany?.detail}</p>
               </dd>
-              <dt>所在地</dt>
+              <dt>{t("Location")}</dt>
               <dd>
-                <p>
-                  <strong>本社</strong>
-                  <br />
-                  〒107-6223 東京都港区赤坂9-7-1　ミッドタウン・タワー23F [
-                  <Link href="https://goo.gl/maps/92foyTdpZAKDhpki9">
-                    アクセスマップはこちら
-                  </Link>
-                  ]
-                </p>
-                <p>
-                  <strong>福岡オフィス</strong>
-                  <br />
-                  〒810-0001 福岡県福岡市中央区天神1-9-17
-                  福岡天神フコク生命ビル15階 [
-                  <Link href="https://goo.gl/maps/92foyTdpZAKDhpki9">
-                    アクセスマップはこちら
-                  </Link>
-                  ]
-                </p>
+                {dataCompany?.branches?.data?.map((branch: any, i: number) => {
+                  const currentBranch = branch.attributes;
+                  return (
+                    <p key={i}>
+                      <strong>{currentBranch.name_branch}</strong>
+                      <br />
+                      {currentBranch.des}
+                      <Link href={currentBranch.location}>
+                        アクセスマップはこちら
+                      </Link>
+                      ]
+                    </p>
+                  );
+                })}
               </dd>
-              <dt>商号</dt>
+              <dt>設立</dt>
               <dd>
-                <p>
-                  株式会社デリバリーコンサルティング（Delivery Consulting Inc.)
-                </p>
+                <p>{dataCompany?.founding}</p>
               </dd>
-              <dt>商号</dt>
+              <dt>取引銀行</dt>
               <dd>
-                <p>
-                  株式会社デリバリーコンサルティング（Delivery Consulting Inc.)
-                </p>
+                <p>{dataCompany?.bank}</p>
               </dd>
-              <dt>商号</dt>
+              <dt>グループ会社</dt>
               <dd>
-                <p>
-                  株式会社デリバリーコンサルティング（Delivery Consulting Inc.)
-                </p>
+                <p>{dataCompany?.group}</p>
               </dd>
               <dt>主要顧客企業</dt>
               <dd>
                 <p>
-                  大手流通小売業
-                  <br />
-                  大手流通小売業
-                  <br />
-                  大手流通小売業
-                  <br />
-                  大手流通小売業
-                  <br />
-                  大手流通小売業
-                  <br />
-                  大手流通小売業
-                  <br />
-                  大手流通小売業
-                  <br />
-                  大手流通小売業
-                  <br />
-                  大手流通小売業
+                  {dataCompany?.customers?.data?.map((c: any, ic: number) => {
+                    const currentC = c.attributes;
+                    return (
+                      <>
+                        {currentC.Name}
+                        <br />
+                      </>
+                    );
+                  })}
                 </p>
               </dd>
             </dl>
@@ -185,7 +183,18 @@ const Page = () => {
             </div>
             <div className={c.companyHistory}>
               <dl>
-                <dt>2003</dt>
+                {dataCompany?.high_lights?.data?.map((h: any, ih: number) => {
+                  const currenH = h.attributes;
+                  return (
+                    <>
+                      <dt>{currenH.year}</dt>
+                      <dd>
+                        <BlocksRenderer content={currenH.content} />
+                      </dd>
+                    </>
+                  );
+                })}
+                {/* <dt>2003</dt>
                 <dd>
                   <p>株式会社デリバリー設立、ITコンサルティング事業を開始</p>
                 </dd>
@@ -239,14 +248,14 @@ const Page = () => {
                     福岡オフィスを開設、IT人材の活用拡大
                   </p>
                 </dd>
-                <dt>2023</dt>
-                <dd>
+                <dt>2023</dt> */}
+                {/* <dd>
                   <p>
                     ベトナムにデリバリーベトナムを設立し日本向けオフショア開発事業開始
                     <br />
                     福岡オフィスを開設、IT人材の活用拡大
                   </p>
-                </dd>
+                </dd> */}
               </dl>
             </div>
           </div>

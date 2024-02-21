@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import classes from "./HeaderToor.module.css";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Burger } from "@mantine/core";
+import { Burger, Switch } from "@mantine/core";
 import { useDisclosure, useOs } from "@mantine/hooks";
+import { useLocale, useTranslations } from "next-intl";
+import LocaleSwitcher from "../../features/locale/LocaleSwitcher";
 
 const HeaderRoot = () => {
   const [scrollDistance, setScrollDistance] = useState<boolean>(false);
@@ -14,61 +16,68 @@ const HeaderRoot = () => {
   const [opened, { toggle, close }] = useDisclosure();
   const [openedItemNavMobi, handlersItemNavMobi] = useDisclosure();
   const pathname = usePathname();
-  const listItemsRefs = useRef<any>([]);
+  const router = useRouter();
   const os = useOs();
+
+  const listItemsRefs = useRef<any>([]);
+
+  const locale = useLocale();
+
+  const t = useTranslations("Header");
+
   const linkNar = useMemo(
     () => [
       {
         content: "What we do",
-        description: "事業概要",
+        description: t("WhatWeDo.Description"),
         active: false,
         top: null,
         href: "",
         megaMenu: [
           {
-            title: "コンサルティング",
-            megaHref: "/jp/approard",
+            title: t("WhatWeDo.MegaMenu.Title1"),
+            megaHref: `/${locale}/approard`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_01_01.png",
             desImage: [
               {
-                contentDesImage: "テクノロジー戦略",
-                linkDesImage: "/jp/technology-strategy-consulting",
+                contentDesImage: t("WhatWeDo.MegaMenu.ContentDesImage1"),
+                linkDesImage: `/${locale}/technology-strategy-consulting`,
               },
             ],
             texts: [],
           },
           {
-            title: "強みと特長",
-            megaHref: "/jp/ourstrength",
+            title: t("WhatWeDo.MegaMenu.Title2"),
+            megaHref: `/${locale}/ourstrength`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_01_02.png",
             texts: [],
           },
           {
-            title: "主なテーマ",
+            title: t("WhatWeDo.MegaMenu.Title3"),
             image: null,
 
             texts: [
               {
-                content: "テクノロジー戦略",
-                link: "/jp/technology-strategy-consulting",
+                content: t("TechnologyStrategy"),
+                link: `/${locale}/technology-strategy-consulting`,
               },
               {
-                content: "モダナイゼーション",
-                link: "/jp/modernization",
+                content: t("Modernization"),
+                link: `/${locale}/modernization`,
               },
               {
-                content: "エマージングテクノロジー",
-                link: "/jp/emerging-technology",
+                content: t("EmergingTechnology"),
+                link: `/${locale}/emerging-technology`,
               },
               {
-                content: "データビジュアライゼーション",
-                link: "/jp/data-visualization",
+                content: t("DataVisualization"),
+                link: `/${locale}/data-visualization`,
               },
               {
-                content: "AI＆アナリティクス",
-                link: "/jp/ai_analytics",
+                content: t("Analytics"),
+                link: `/${locale}/ai_analytics`,
               },
             ],
           },
@@ -76,52 +85,52 @@ const HeaderRoot = () => {
       },
       {
         content: "Project",
-        description: "案件事例",
+        description: t("Project.Description"),
         active: pathname === "projects",
-        href: "/jp/projects",
+        href: `/${locale}/projects`,
         top: null,
       },
       {
         content: "Who we are",
-        description: "私たちについて",
+        description: t("WhoWeAre.Description"),
         active: false,
         top: null,
         href: "",
         megaMenu: [
           {
-            title: "経営理念",
-            megaHref: "/jp/the-pledge",
+            title: t("WhoWeAre.MegaMenu.Title1"),
+            megaHref: `/${locale}/the-pledge`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_01.png",
             texts: [],
           },
           {
-            title: "会社概要",
-            megaHref: "/jp/company_profile",
+            title: t("WhoWeAre.MegaMenu.Title2"),
+            megaHref: `/${locale}/company_profile`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_02.png",
             desImage: [
               {
-                contentDesImage: "テクノロジーパートナー",
-                linkDesImage: "/jp/company_profile/products",
+                contentDesImage: t("WhoWeAre.MegaMenu.ContentDesImage2"),
+                linkDesImage: `/${locale}/company_profile/products`,
               },
               {
-                contentDesImage: "関連会社",
-                linkDesImage: "/jp/company_profile/associated_company",
+                contentDesImage: t("WhoWeAre.MegaMenu.ContentDesImage3"),
+                linkDesImage: `/${locale}/company_profile/associated_company`,
               },
             ],
             texts: [],
           },
           {
-            title: "リーダーシップ",
-            megaHref: "/jp/leadership",
+            title: t("WhoWeAre.MegaMenu.Title3"),
+            megaHref: `/${locale}/leadership`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_03.png",
             texts: [],
           },
           {
-            title: "人材育成",
-            megaHref: "/jp/employee-development-system",
+            title: t("WhoWeAre.MegaMenu.Title4"),
+            megaHref: `/${locale}/employee-development-system`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_04.png",
             texts: [],
@@ -130,45 +139,45 @@ const HeaderRoot = () => {
       },
       {
         content: "Sustainability",
-        description: "サステナビリティ",
+        description: t("Sustainability.Description"),
         active: pathname === "sustainability",
-        href: "/jp/sustainability",
+        href: `/${locale}/sustainability`,
         top: null,
       },
       {
         content: "Information",
-        description: "お知らせ",
+        description: t("Information.Description"),
         active: false,
         href: "",
         top: {
-          label: "お知らせトップ",
-          link: "/jp/news",
+          label: t("Information.Label"),
+          link: `/${locale}/news`,
         },
         megaMenu: [
           {
-            title: "プレスリリース",
-            megaHref: "/jp/news/tag/001-プレスリリース",
+            title: t("Information.MegaMenu.Title1"),
+            megaHref: `/${locale}/news/tag/001-プレスリリース`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_02_01.png",
             texts: [],
           },
           {
-            title: "ニュース",
-            megaHref: "/jp/news/tag/010-ニュース",
+            title: t("Information.MegaMenu.Title2"),
+            megaHref: `/${locale}/news/tag/010-ニュース`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_03_03.png",
             texts: [],
           },
           {
-            title: "イベント・セミナー情報",
-            megaHref: "/jp/news/tag/020-イベント-セミナー情報",
+            title: t("Information.MegaMenu.Title3"),
+            megaHref: `/${locale}/news/tag/020-イベント-セミナー情報`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_03_01.png",
             texts: [],
           },
           {
-            title: "オンライントレーニング・体験会",
-            megaHref: "/jp/news/tag/030-オンライントレーニング-体験会",
+            title: t("Information.MegaMenu.Title4"),
+            megaHref: `/${locale}/news/tag/030-オンライントレーニング-体験会`,
             image:
               "https://www.deliv.co.jp/hubfs/corp_2022/files/images/img_head_03_02.png",
             texts: [],
@@ -177,48 +186,48 @@ const HeaderRoot = () => {
       },
       {
         content: "IR",
-        description: "株主・投資家向け情報",
+        description: t("IR.Description"),
         active: false,
         top: {
-          label: "株主・投資家向け情報トップ",
-          link: "/jp/ir",
+          label: t("IR.Label"),
+          link: `/${locale}/ir`,
         },
         href: "",
         megaMenu: [
           {
-            title: "IRニュース",
+            title: t("IR.MegaMenu.Title1"),
             image: null,
-            megaHref: "/jp/ir/news",
+            megaHref: `/${locale}/ir/news`,
             texts: [],
           },
           {
-            title: "主なテーマ",
+            title: t("IR.MegaMenu.Title2"),
             image: null,
             texts: [
               {
-                content: "エマージングテクノロジー",
-                link: "/jp/technology-strategy-consulting",
+                content: t("EmergingTechnology"),
+                link: `/${locale}/technology-strategy-consulting`,
               },
               {
-                content: "データビジュアライゼーション",
-                link: "/jp/technology-strategy-consulting",
+                content: t("DataVisualization"),
+                link: `/${locale}/technology-strategy-consulting`,
               },
               {
-                content: "ソリューションエンジニアリング",
-                link: "/jp/technology-strategy-consulting",
+                content: t("SolutionEngineering"),
+                link: `/${locale}/technology-strategy-consulting`,
               },
             ],
           },
           {
-            title: "財務ハイライト",
+            title: t("IR.MegaMenu.Title3"),
             image: null,
-            megaHref: "/jp/ir/highlight",
+            megaHref: `/${locale}/ir/highlight`,
             texts: [],
           },
         ],
       },
     ],
-    [pathname]
+    [pathname, locale]
   );
 
   const handleMouseOver = (index: number) => {
@@ -276,6 +285,9 @@ const HeaderRoot = () => {
               )}
             </Link>
           </div>
+
+          <LocaleSwitcher />
+
           <div className={classes.menuBtn}>
             <Burger
               opened={opened}
@@ -381,11 +393,7 @@ const HeaderRoot = () => {
                                           className={classes.secondaryContLink}
                                         >
                                           <Link
-                                            href={`${
-                                              megaItem.megaHref
-                                                ? megaItem.megaHref
-                                                : "/jp/approard"
-                                            }`}
+                                            href={megaItem.megaHref}
                                             className={classes.arrow01}
                                           >
                                             {megaItem.title}
@@ -441,7 +449,7 @@ const HeaderRoot = () => {
                                             href={`${
                                               megaItem.megaHref
                                                 ? megaItem.megaHref
-                                                : "/jp/approard"
+                                                : ""
                                             }`}
                                             className={classes.arrow01}
                                           >
@@ -494,7 +502,9 @@ const HeaderRoot = () => {
                       }`}
                     >
                       <div className={classes.en}>Recuit</div>
-                      <div className={classes.jp}>採用情報</div>
+                      <div className={classes.jp}>
+                        {t("RecruitmentInformation")}
+                      </div>
                     </Link>
                   </div>
                 </li>
@@ -509,43 +519,13 @@ const HeaderRoot = () => {
                       }`}
                     >
                       <div className={classes.en}>Contact</div>
-                      <div className={classes.jp}>採用情報</div>
+                      <div className={classes.jp}>{t("Inquiry")}</div>
                     </Link>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
-          {/* <div className={classes.headerCNV}>
-            <ul>
-              <li className={classes.headerCNVBtn}>
-                <div>
-                  <Link
-                    href=""
-                    className={`${classes.headerCNBtnLink} ${
-                      scrollDistance ? classes["btnCNV--active"] : ""
-                    }`}
-                  >
-                    <div className={classes.en}>Recuit</div>
-                    <div className={classes.jp}>採用情報</div>
-                  </Link>
-                </div>
-              </li>
-              <li className={classes.headerCNVBtn}>
-                <div>
-                  <Link
-                    href=""
-                    className={`${classes.headerCNBtnLink} ${
-                      scrollDistance ? classes["btnCNV--active"] : ""
-                    }`}
-                  >
-                    <div className={classes.en}>Contact</div>
-                    <div className={classes.jp}>採用情報</div>
-                  </Link>
-                </div>
-              </li>
-            </ul>
-          </div> */}
         </div>
       </div>
     </header>

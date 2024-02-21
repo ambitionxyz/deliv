@@ -1,10 +1,10 @@
 import createMiddleware from "next-intl/middleware";
 
 export default createMiddleware({
-  locales: ["jp", "en"],
-  defaultLocale: "jp",
+  locales: ["ja", "en"],
+  defaultLocale: "ja",
 });
 
 export const config = {
-  matcher: ["/", "/(jp|en)/:path*"],
+  matcher: ["/", "/(ja|en)/:path*"],
 };

@@ -1,3 +1,7 @@
+.MvWrapper * {
+  color: var(--color-white);
+}
+
 .MvWrapper {
   position: relative;
   width: 100%;

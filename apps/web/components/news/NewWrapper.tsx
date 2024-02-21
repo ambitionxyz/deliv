@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { fetchDataNews } from "../../api/News";
 import { useDisclosure } from "@mantine/hooks";
 import Recuit from "../top/Recruit";
+import { useLocale } from "next-intl";
 
 export const NewContext = createContext<any>(null);
 
@@ -16,21 +17,23 @@ function NewsProvider(props: any) {
   const [headerBackGround, setHeaderBackground] = useState(null);
   const [tag, setTag] = useState("");
   const [listTag, setListTag] = useState<any>([]);
+  const locale = useLocale();
 
   useEffect(() => {
     const getDataProjectBy = async () => {
-      const dataFetch = await fetchDataNews();
+      const dataFetch = await fetchDataNews(locale);
+      console.log(dataFetch);
       if (tag === "") {
         setListTag(dataFetch.data);
         return;
       }
       const result: any[] = [];
       dataFetch.data.map((item: any) => {
-        const tags = item.attributes.tag;
+        const tags = item.attributes.Tags;
 
         if (tags.length > 0) {
           tags.map((t: any, i: number) => {
-            if (t.tagName === tag) {
+            if (t.Name === tag) {
               return result.push(item);
             }
           });
@@ -39,7 +42,7 @@ function NewsProvider(props: any) {
       setListTag(result);
     };
     getDataProjectBy();
-  }, [tag]);
+  }, [tag, locale]);
 
   return (
     <NewContext.Provider
@@ -67,6 +70,7 @@ function Content({ children = null }: ContentProps) {
   const [openedTag, handlers] = useDisclosure(false);
 
   const pathName = usePathname();
+  const locale = useLocale();
 
   if (!headerBackGround || !listTag) {
     return <>LOADING</>;
@@ -99,8 +103,8 @@ function Content({ children = null }: ContentProps) {
                   }}
                 >
                   <Link
-                    href="/jp/news"
-                    className={pathName === "/jp/news" ? c.current : ""}
+                    href={`/${locale}/news`}
+                    className={pathName === `/${locale}/news` ? c.current : ""}
                   >
                     すべて
                   </Link>
@@ -112,9 +116,9 @@ function Content({ children = null }: ContentProps) {
                   }}
                 >
                   <Link
-                    href="/jp/news/tag/001-プレスリリース"
+                    href={`/${locale}/news/tag/001-プレスリリース`}
                     className={
-                      pathName === "/jp/news/tag/001-プレスリリース"
+                      pathName === `/${locale}/news/tag/001-プレスリリース`
                         ? c.current
                         : ""
                     }
@@ -129,9 +133,11 @@ function Content({ children = null }: ContentProps) {
                   }}
                 >
                   <Link
-                    href="/jp/news/tag/010-ニュース"
+                    href={`/${locale}/news/tag/010-ニュース`}
                     className={
-                      pathName === "/jp/news/tag/010-ニュース" ? c.current : ""
+                      pathName === `/${locale}/news/tag/010-ニュース`
+                        ? c.current
+                        : ""
                     }
                   >
                     ニュース
@@ -139,9 +145,10 @@ function Content({ children = null }: ContentProps) {
                 </li>
                 <li>
                   <Link
-                    href="/jp/news/tag/020-イベント-セミナー情報"
+                    href={`/${locale}/news/tag/020-イベント-セミナー情報`}
                     className={
-                      pathName === "/jp/news/tag/020-イベント-セミナー情報"
+                      pathName ===
+                      `/${locale}/news/tag/020-イベント-セミナー情報`
                         ? c.current
                         : ""
                     }
@@ -151,10 +158,10 @@ function Content({ children = null }: ContentProps) {
                 </li>
                 <li>
                   <Link
-                    href="/jp/news/tag/030-オンライントレーニング-体験会"
+                    href={`/${locale}/news/tag/030-オンライントレーニング-体験会`}
                     className={
                       pathName ===
-                      "/jp/news/tag/030-オンライントレーニング-体験会"
+                      `/${locale}/news/tag/030-オンライントレーニング-体験会`
                         ? c.current
                         : ""
                     }
@@ -170,23 +177,25 @@ function Content({ children = null }: ContentProps) {
                 {listTag.length > 0 &&
                   listTag.map((tag: any, index: number) => {
                     const currentTag = tag.attributes;
+                    console.log({ currentTag });
+
                     return (
                       <li key={index}>
                         <div className={c.listedNewsHead}>
                           <div className={c.newsDate}>{currentTag.time}</div>
                           <ul className={c.newsCats}>
-                            {currentTag.tag.length > 0 &&
-                              currentTag.tag.map((t: any, i: number) => {
+                            {currentTag.Tags.length > 0 &&
+                              currentTag.Tags.map((t: any, i: number) => {
                                 return (
                                   <li key={i} className={c.newsCat}>
-                                    {t.tagName}
+                                    {t.Name}
                                   </li>
                                 );
                               })}
                           </ul>
                         </div>
                         <div className={c.listedNewsTitle}>
-                          <Link href={`/jp/news/${currentTag.id_new}`}>
+                          <Link href={`/${locale}/news/${currentTag.id_new}`}>
                             {currentTag.title}
                           </Link>
                         </div>

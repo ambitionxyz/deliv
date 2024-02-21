@@ -8,11 +8,11 @@
 }
 
 .jp--active {
-  color: var(--color-black);
+  color: var(--color-black) !important;
 }
 
 .en--active {
-  color: var(--color-b);
+  color: var(--color-b) !important;
 }
 
 .btnCNV--active {
@@ -79,6 +79,7 @@
                 display: block;
                 font-size: 18px;
                 line-height: 1.333;
+                color: var(--color-white);
               }
 
               .jp {
@@ -87,6 +88,7 @@
                 font-size: 13px;
                 line-height: 1.545;
                 margin-top: 8px;
+                color: var(--color-white);
               }
             }
           }
@@ -312,14 +314,14 @@
                 text-decoration: none !important;
 
                 .en {
-                  color: var(--color-b);
+                  color: var(--color-b) !important;
                   font-size: 15px !important;
                   font-weight: 700;
                   margin-right: 10px;
                 }
 
                 .jp {
-                  color: var(--color-black);
+                  color: var(--color-black) !important;
                 }
               }
 
@@ -461,6 +463,7 @@
             font-weight: 500;
             line-height: 1.333;
             font-size: 14px;
+            color: var(--color-white);
           }
 
           .jp {
@@ -470,6 +473,7 @@
             font-size: 8px;
             line-height: 1.545;
             margin-top: 8px;
+            color: var(--color-white);
           }
         }
       }

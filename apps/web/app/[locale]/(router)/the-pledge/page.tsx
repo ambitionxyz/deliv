@@ -6,9 +6,11 @@ import Recuit from "../../../../components/top/Recruit";
 
 import c from "./Page.module.css";
 import { useOs } from "@mantine/hooks";
+import { useTranslations } from "next-intl";
 
 const Page = () => {
   const os = useOs();
+  const t = useTranslations("Index");
 
   return (
     <>
@@ -19,60 +21,57 @@ const Page = () => {
             ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_pledge.png"
             : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_pledge_sp.png"
         }
-        description="経営理念"
+        description={t("ManagementPhilosophy")}
       />
       <div className={c.topicPath}>
         <Link href="/jp">HOME</Link>
         <span> + </span>
-        <span>私たちについて</span>
+        <span>{t("AboutUs")}</span>
         <span>+</span>
-        <span>私たちの誓い </span>
+        <span>{t("OurOath")} </span>
       </div>
 
       <div className={c.content}>
         <div className={`${c.section} ${c.narrow}`}>
           <div className={c.pledgeLead}>
-            <p>顧客、株主の皆様、そして全社員。</p>
+            <p>{t("Customers")}</p>
+            <p>{t("Stakeholders")}</p>
             <p>
-              あらゆるステークホルダーに向けて、「私たちデリバリーコンサルティングの誓い」という形で、
-            </p>
-            <p>
-              経営理念「The PLEDGE」を2021年5月に策定しました。
+              {t("Formulated")}
               <br />
-              私たちが「何者であり、これからどうなっていくのか」を指し示す道標です。
+              {t("Guidepost")}
             </p>
           </div>
           <div className={c.pledgeFrame}>
             <h2 className={c.pledgeTlte}>The PLEDGE</h2>
             <div className={c.pledgeTlteJP}>
-              日本のITサービスを変える
+              {t("Changing")}
               <br className={c["only-sp"]} />
-              テクノロジーコンサルティング
+              {t("Technology")}
             </div>
             <dl>
-              <dt>企業を変革するビジネスパートナー</dt>
+              <dt>{t("BusinessPartners")}</dt>
               <dd>
-                我々はレガシーと最先端の双方を熟知したITプロフェッショナル集団。
+                {t("Professionals")}
                 <br />
-                システム構築から内製化まで高付加価値サービスを提供し、クライアントのビジネスモデル変革や新規サービス開発を実現します。
+                {t("Construction")}
               </dd>
               <dt>
-                時代が求める、時代に先駆ける
+                {t("Ahead")}
                 <br className={c["only-sp"]} />
-                IT人材を育成
+                {t("DevelopingIT2")}
               </dt>
               <dd>
-                デジタル技術が企業変革を加速する時代。
+                {t("Transformation")}
                 <br />
-                1)世界レベルのテックナレッジによりシステムを最適構築するアーキテクト、2)
-                デジタル変革を成功に導くプロジェクトマネジメント、3)
-                システム内製化を具現するイネーブルメントの３つをコアコンピタンスとしたITプロフェッショナルを育成します。
+                1){t("Architects")}){t("ProjectManagement")}3)
+                {t("Competencies")}
               </dd>
-              <dt>健全な企業文化と健全な経営</dt>
+              <dt> {t("Healthy")}</dt>
               <dd>
-                挑戦・互助・公正を尊重する企業文化を育み、楽しく豊かに働く環境を提供。
+                {t("Foster")}
                 <br />
-                日本を支えるITサービス産業の一員として正々堂々と経営を行い、社会の発展に貢献します。
+                {t("Industry")}
               </dd>
             </dl>
           </div>

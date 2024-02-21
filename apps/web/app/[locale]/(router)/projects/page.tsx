@@ -8,17 +8,22 @@ import Headerbackground from "../../../../components/headerBackground/HeaderBack
 import c from "./Page.module.css";
 import { useEffect, useState } from "react";
 import Recuit from "../../../../components/top/Recruit";
+import { useLocale, useTranslations } from "next-intl";
 
 const Page = () => {
   const [data, setData] = useState<object[]>();
+  const locale = useLocale();
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetchDataProjects();
+      const res = await fetchDataProjects(locale);
+      console.log(res.data);
       setData(res.data);
     };
 
     fetchData();
-  }, []);
+  }, [locale]);
+
+  const t = useTranslations("Index");
 
   const os = useOs();
 
@@ -31,12 +36,12 @@ const Page = () => {
             ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_projects.png"
             : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/corp_2022/files/images/kv_projects_sp.png"
         }
-        description="案件事例"
+        description={t("CaseExample")}
       />
       <div className={c.topicPath}>
         <Link href="/jp">HOME</Link>
         <span> + </span>
-        <span>案件事例</span>
+        <span>{t("CaseExample")}</span>
       </div>
       <div className={c.contents}>
         <div className={c.section}>
@@ -52,20 +57,20 @@ const Page = () => {
                     <div className={c.caseBody}>
                       <div className={c.caseTitle}>{item.attributes.title}</div>
                       <ul className={c.caseCats}>
-                        {item.attributes.themes.content.map(
+                        {item.attributes.Themes.map(
                           (theme: any, indexTheme: number) => {
                             return (
                               <li key={indexTheme} className={c["cat-theme"]}>
-                                {theme}
+                                {theme.Name}
                               </li>
                             );
                           }
                         )}
                       </ul>
                       <div className={c.caseTxt}>
-                        {item.attributes.descriptions.content.map(
+                        {item.attributes.Descriptions.map(
                           (des: any, indexDes: number) => {
-                            return <p key={indexDes}>{des}</p>;
+                            return <p key={indexDes}>{des.Name}</p>;
                           }
                         )}
                       </div>

@@ -6,6 +6,7 @@ import Headerbackground from "../../../../../components/headerBackground/HeaderB
 
 import c from "./Page.module.css";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 
 const tagList = [
   {
@@ -26,10 +27,11 @@ const Page = () => {
   const [year, setYear] = useState<string>("2023");
   const [currentIRTag, setCurrentIRTag] = useState<string>("すべて");
   const [listIR, setListIR] = useState<any>([]);
+  const locale = useLocale();
 
   useEffect(() => {
     const getDataIrBy = async () => {
-      const dataFetch = await fetchDataIRs();
+      const dataFetch = await fetchDataIRs(locale);
 
       const result: any[] = [];
 
@@ -38,6 +40,8 @@ const Page = () => {
         const currentItem = item.attributes;
         const currentTime = currentItem.time.split(".")[0];
 
+        console.log(currentItem);
+
         if (year !== currentTime) {
           return;
         } else {
@@ -45,11 +49,11 @@ const Page = () => {
             result.push(item);
           } else {
             //fiter tag
-            currentItem.tag.map((t: any) => {
-              if (t.tagName === currentIRTag) {
-                result.push(item);
-              }
-            });
+            // currentItem.tag.map((t: any) => {
+            //   if (t.tagName === currentIRTag) {
+            //     result.push(item);
+            //   }
+            // });
           }
         }
       });
@@ -57,7 +61,7 @@ const Page = () => {
     };
 
     getDataIrBy();
-  }, [currentIRTag, year]);
+  }, [currentIRTag, year, locale]);
 
   const handleSelectChange = (event: any) => {
     const selectedOption = event.target.value;
@@ -116,10 +120,10 @@ const Page = () => {
                           <div className={c.listedNewsHead}>
                             <div className={c.newsDate}>{ir.time}</div>
                             <ul className={c.newsCats}>
-                              {ir.tag.length > 0 &&
+                              {/* {ir.tag.length > 0 &&
                                 ir.tag.map((t: any, it: number) => (
                                   <li className={c.newsCat}>{t.tagName}</li>
-                                ))}
+                                ))} */}
                             </ul>
                           </div>
                           <div className={c.listedNewsTitle}>

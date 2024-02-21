@@ -19,6 +19,7 @@ import Headerbackground from "../headerBackground/HeaderBackground";
 import Link from "next/link";
 import { fetchDataProjects } from "../../api/Project";
 import Recuit from "../top/Recruit";
+import { useLocale, useTranslations } from "next-intl";
 
 const formSchema = z.object({
   company: z.string().min(1, {
@@ -93,19 +94,21 @@ const linkList = [
 export const WhatWeDoContext = createContext<any>(null);
 
 function WhatWeDoProvider(props: any) {
+  const locale = useLocale();
+
   const [headerBackground, setHeaderBackground] = useState(null);
   const [themes, setThemes] = useState(null);
   const [listProducts, setProducts] = useState<any>([]);
   const [listThemeCharater, setListThemeCharater] = useState<any>([]);
   const [themeLead, setThemeLead] = useState();
 
+  const t = useTranslations("Index");
+
   useEffect(() => {
     if (themes === null) return;
     const getDataProjectBy = async (type: string) => {
-      const dataFetch = await fetchDataProjects();
-
+      const dataFetch = await fetchDataProjects(locale);
       const result: any[] = [];
-
       dataFetch.data.map((item: any) => {
         const themes = item.attributes.themes.content;
         if (themes.length > 0) {
@@ -114,10 +117,11 @@ function WhatWeDoProvider(props: any) {
           }
         }
       });
+
       setProducts(result);
     };
     getDataProjectBy(themes);
-  }, [themes]);
+  }, [themes, locale]);
 
   return (
     <WhatWeDoContext.Provider
@@ -131,6 +135,8 @@ function WhatWeDoProvider(props: any) {
         setHeaderBackground,
         setListThemeCharater,
         setThemes,
+        t,
+        locale,
       }}
     >
       {props.children}
@@ -145,6 +151,8 @@ function Content() {
     listThemeCharater,
     themes,
     listProducts,
+    t,
+    locale,
   } = useContext(WhatWeDoContext);
 
   if (
@@ -207,7 +215,7 @@ function Content() {
           </div>
         </div>
         <div className={`${c.section} ${c.pb0} ${c.relationProjects}`}>
-          <h2 className={c.bdrTitle}>このテーマのプロジェクト事例</h2>
+          <h2 className={c.bdrTitle}>{t("ProjectExamples")}</h2>
           <div className={c.projectIndex}>
             <div className={c.projectIndexList}>
               {listProducts.length > 0 &&
@@ -250,70 +258,106 @@ function Content() {
           </div>
         </div>
         <div className={`${c.section} ${c.pb0}`}>
-          <h2 className={c.bdrTitle}>{themes}についてのお問い合わせ</h2>
+          <h2 className={c.bdrTitle}>
+            {themes}
+            {t("Inquiries")}
+          </h2>
           <div className={c.formArea}>
-            <p>＊は必須項目です。</p>
+            <p>{t("RequiredField")}</p>
             <div className={c.formBody}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <div className={c["form-columns-1"]}>
                   <div className={c["hs-form-field"]}>
-                    <TextInput variant="filled" placeholder="会社名" />
+                    <TextInput
+                      variant="filled"
+                      placeholder={t("CompanyName")}
+                    />
                     <span className={c["hs-form-required"]}></span>
                   </div>
                 </div>
 
                 <div className={c["form-columns-2"]}>
                   <div className={c["hs-form-field2"]}>
-                    <TextInput variant="filled" placeholder="姓" />
+                    <TextInput variant="filled" placeholder={t("Surname")} />
                     <span className={c["hs-form-required"]}></span>
                   </div>
                   <div className={c["hs-form-field2"]}>
-                    <TextInput variant="filled" placeholder="名" />
+                    <TextInput variant="filled" placeholder={t("GivenName")} />
                     <span className={c["hs-form-required"]}></span>
                   </div>
                 </div>
 
                 <div className={c["form-columns-1"]}>
                   <div className={`${c["hs-form-field"]}`}>
-                    <Textarea variant="filled" placeholder="お問い合わせ内容" />
+                    <Textarea
+                      variant="filled"
+                      placeholder={t("ContentOfInquiry")}
+                    />
                   </div>
                 </div>
 
                 <div className={c["form-columns-1"]}>
-                  <h3 className={c.boldTitle}>個人情報の取扱いについて</h3>
+                  <h3 className={c.boldTitle}>{t("AboutTheHandling")}</h3>
                   <div className={c.privacyTerms}>
-                    <Textarea disabled variant="filled">
-                      当社では、個人情報を厳重に管理するために、以下の内容を実施します。
-                      個人情報は、当社の個人情報保護マニュアルや内部規程に従って適正に管理します。
-                      個人情報は、お問い合わせ対応の目的で使用いたします。
-                      個人情報は、処理のために当社の基準を満たす委託先に業務委託することがあります。
-                      　なお、委託先以外の第三者に対しては提供いたしません。
-                      個人情報は、ご本人様確認の上、開示・訂正等を行います。
-                      個人情報を当社に与えていただくことは任意ですが、情報が不足する場合適切な対応が
-                      　実施できないことがあります。
-                      個人情報に関するご相談・苦情については、以下の連絡先までお願いします。
-                      連絡先
-                      株式会社デリバリーコンサルティング　個人情報保護推進事務局
-                      info@deliv.co.jp
-                      弊社は、いただいた個人情報をお問い合わせへの対応にのみ使用し、他の目的および第三者が利用することはございません。
-                      個人情報の保護と管理にあたっては、散逸、紛失、改ざん、漏洩等のないように適切な措置をとり、安全に管理します。
-                      また、弊社の個人情報に関する取り扱いについて詳しくは「個人情報保護方針」をご覧ください。
-                    </Textarea>
+                    {locale === "ja" ? (
+                      <Textarea disabled variant="filled">
+                        個人情報は、当社の個人情報保護マニュアルや内部規程に従って適正に管理します。
+                        個人情報は、お問い合わせ対応の目的で使用いたします。
+                        個人情報は、処理のために当社の基準を満たす委託先に業務委託することがあります。
+                        　なお、委託先以外の第三者に対しては提供いたしません。
+                        個人情報は、ご本人様確認の上、開示・訂正等を行います。
+                        個人情報を当社に与えていただくことは任意ですが、情報が不足する場合適切な対応が
+                        　実施できないことがあります。
+                        個人情報に関するご相談・苦情については、以下の連絡先までお願いします。
+                        連絡先
+                        株式会社デリバリーコンサルティング　個人情報保護推進事務局
+                        info@deliv.co.jp
+                        弊社は、いただいた個人情報をお問い合わせへの対応にのみ使用し、他の目的および第三者が利用することはございません。
+                        個人情報の保護と管理にあたっては、散逸、紛失、改ざん、漏洩等のないように適切な措置をとり、安全に管理します。
+                        また、弊社の個人情報に関する取り扱いについて詳しくは「個人情報保護方針」をご覧ください。
+                      </Textarea>
+                    ) : (
+                      <Textarea disabled variant="filled">
+                        Personal information will be managed appropriately in
+                        accordance with our personal information protection
+                        manual and internal regulations. Personal information
+                        will be used for the purpose of responding to inquiries.
+                        We may outsource the processing of personal information
+                        to subcontractors that meet our standards. Please note
+                        that we will not provide your information to any third
+                        party other than the outsourcing company. Personal
+                        information will be disclosed or corrected after
+                        confirming the identity of the individual. Providing
+                        personal information to us is voluntary, but if
+                        information is insufficient, appropriate measures will
+                        be taken. 　It may not be possible to implement it. For
+                        inquiries or complaints regarding personal information,
+                        please contact us using the contact information below.
+                        contact address Delivery Consulting Co., Ltd. Personal
+                        Information Protection Promotion Office info@deliv.co.jp
+                        We will use the personal information we receive only to
+                        respond to your inquiry and will not use it for any
+                        other purpose or to any third party. When protecting and
+                        managing personal information, we will take appropriate
+                        measures to prevent it from being dissipated, lost,
+                        falsified, leaked, etc., and manage it safely. For more
+                        information about our handling of personal information,
+                        please see our "Privacy Policy."
+                      </Textarea>
+                    )}
                   </div>
-                  <p>
-                    上記事項をご確認のうえ、ご同意いただける方は下記の「同意する」にチェックをしてください。
-                  </p>
+                  <p>{t("Confirming")}</p>
                 </div>
 
                 <div className={c["form-columns-1"]}>
                   <div className={c.checkBox}>
-                    <Checkbox defaultChecked size="xs" label="同意する" />
+                    <Checkbox defaultChecked size="xs" label={t("Agree")} />
                   </div>
                 </div>
 
                 <div className={c["hs-submit"]}>
                   <Button variant="outline" radius="xs" className={c.btn}>
-                    送信
+                    ={t("Send")}
                   </Button>
                 </div>
               </form>
@@ -321,7 +365,7 @@ function Content() {
           </div>
         </div>
         <div className={c.section}>
-          <h2 className={c.bdrTitle}>テーマ一覧</h2>
+          <h2 className={c.bdrTitle}>{t("ThemeList")} </h2>
           {linkList.length > 0 && (
             <ul className={c.linkListCol3}>
               {linkList.map((link, i) => {

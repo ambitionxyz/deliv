@@ -1,3 +1,7 @@
+.recruitCNV * {
+  color: var(--color-white);
+}
+
 .recruitCNV {
   background-color: var(--color-white);
   padding-bottom: 0;

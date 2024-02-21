@@ -1,151 +1,152 @@
 import Link from "next/link";
 import c from "./FooterRoot.module.css";
 import { MoveUp } from "lucide-react";
-
-const footNavs1 = [
-  {
-    label: {
-      en: "What we do",
-      jp: "事業概要",
-      labelHref: "",
-    },
-    content: [
-      {
-        description: "コンサルティング",
-        href: "",
-        childlinks: [],
-      },
-      {
-        description: "強みと特長",
-        href: "",
-        childlinks: [],
-      },
-      {
-        description: "主なテーマ",
-        href: "",
-        childlinks: [
-          { childDescription: "テクノロジー戦略", childHref: "" },
-          { childDescription: "アーキテクチャ＆デリバリー", childHref: "" },
-          { childDescription: "クラウド", childHref: "" },
-          { childDescription: "データ戦略", childHref: "" },
-          { childDescription: "データ基盤", childHref: "" },
-        ],
-      },
-    ],
-  },
-  {
-    label: {
-      en: "Project",
-      jp: "案件事例",
-      labelHref: "/projects",
-    },
-    content: [],
-  },
-  {
-    label: {
-      en: "Who we are",
-      jp: "私たちについて",
-      labelHref: "",
-    },
-    content: [
-      {
-        description: "経営理念",
-        href: "",
-        childlinks: [],
-      },
-      {
-        description: "会社概要",
-        href: "",
-        childlinks: [
-          { childDescription: "テクノロジーパートナー", childHref: "" },
-          { childDescription: "関連会社", childHref: "" },
-        ],
-      },
-      {
-        description: "リーダーシップ",
-        href: "",
-        childlinks: [],
-      },
-      {
-        description: "人材育成",
-        href: "",
-        childlinks: [],
-      },
-    ],
-  },
-];
-
-const footNavs2 = [
-  {
-    label: {
-      en: "Information",
-      jp: "お知らせ",
-      labelHref: "",
-    },
-    content: [
-      {
-        description: "プレスリリース",
-        href: "",
-        childlinks: [],
-      },
-      {
-        description: "ニュース",
-        href: "",
-        childlinks: [],
-      },
-      {
-        description: "イベント・セミナー情報",
-        href: "",
-        childlinks: [],
-      },
-      {
-        description: "オンライントレーニング・体験会",
-        href: "",
-        childlinks: [],
-      },
-    ],
-  },
-
-  {
-    label: {
-      en: "Recruit",
-      jp: "採用情報",
-      labelHref: "",
-    },
-    content: [
-      {
-        description: "新卒採用",
-        href: "",
-        childlinks: [],
-      },
-      {
-        description: "キャリア採用",
-        href: "",
-        childlinks: [],
-      },
-    ],
-  },
-  {
-    label: {
-      en: "Contact",
-      jp: "お問い合わせ",
-      labelHref: "",
-    },
-    content: [],
-  },
-];
+import { useTranslations } from "next-intl";
 
 const FooterRoot = () => {
+  const t = useTranslations("Footer");
+  const footNavs1 = [
+    {
+      label: {
+        en: "What we do",
+        jp: t("Business"),
+        labelHref: "",
+      },
+      content: [
+        {
+          description: t("Consulting"),
+          href: "",
+          childlinks: [],
+        },
+        {
+          description: t("StrengthsAndFeatures"),
+          href: "",
+          childlinks: [],
+        },
+        {
+          description: t("MainTheme"),
+          href: "",
+          childlinks: [
+            { childDescription: t("TechnologyStrategy"), childHref: "" },
+            { childDescription: t("ArchitectureDelivery"), childHref: "" },
+            { childDescription: t("Cloud"), childHref: "" },
+            { childDescription: t("DataStrategy"), childHref: "" },
+            { childDescription: t("DataInfrastructure"), childHref: "" },
+          ],
+        },
+      ],
+    },
+    {
+      label: {
+        en: "Project",
+        jp: t("CaseExample"),
+        labelHref: "/projects",
+      },
+      content: [],
+    },
+    {
+      label: {
+        en: "Who we are",
+        jp: t("AboutUs"),
+        labelHref: "",
+      },
+      content: [
+        {
+          description: t("ManagementPhilosophy"),
+          href: "",
+          childlinks: [],
+        },
+        {
+          description: t("CompanyProfile"),
+          href: "",
+          childlinks: [
+            { childDescription: t("TechnologyPartner"), childHref: "" },
+            { childDescription: t("Affiliate"), childHref: "" },
+          ],
+        },
+        {
+          description: t("Leadership"),
+          href: "",
+          childlinks: [],
+        },
+        {
+          description: t("Human"),
+          href: "",
+          childlinks: [],
+        },
+      ],
+    },
+  ];
+
+  const footNavs2 = [
+    {
+      label: {
+        en: "Information",
+        jp: t("Notice"),
+        labelHref: "",
+      },
+      content: [
+        {
+          description: t("PressRelease"),
+          href: "",
+          childlinks: [],
+        },
+        {
+          description: t("News"),
+          href: "",
+          childlinks: [],
+        },
+        {
+          description: t("Event"),
+          href: "",
+          childlinks: [],
+        },
+        {
+          description: t("Online"),
+          href: "",
+          childlinks: [],
+        },
+      ],
+    },
+
+    {
+      label: {
+        en: "Recruit",
+        jp: t("RecruitmentInformation"),
+        labelHref: "",
+      },
+      content: [
+        {
+          description: t("NewGraduateRecruitment"),
+          href: "",
+          childlinks: [],
+        },
+        {
+          description: t("Career"),
+          href: "",
+          childlinks: [],
+        },
+      ],
+    },
+    {
+      label: {
+        en: "Contact",
+        jp: t("Inquiry"),
+        labelHref: "",
+      },
+      content: [],
+    },
+  ];
   return (
     <footer className={c.footerWrapper}>
       <div className={c.footCNV}>
         <Link href="/contact">
-          デリバリーコンサルティングへの
+          {t("ToDeliveryConsulting")}
           <br />
           <span>
-            サービスや製品に関する
+            {t("Regarding")}
             <br className={c.br} />
-            ご相談・お問い合わせ
+            {t("Consultation")}
           </span>
         </Link>
       </div>
@@ -158,8 +159,8 @@ const FooterRoot = () => {
             />
           </div>
           <p className={c.companyAddress}>
-            〒107-6223 東京都港区赤坂9-7-1
-            <span>ミッドタウン・タワー23F</span>
+            {t("Address")}
+            <span> {t("Midtown")}</span>
           </p>
           <ul className={c.companySNS}>
             <li>
@@ -286,10 +287,10 @@ const FooterRoot = () => {
         <div className={c.footAside}>
           <ul>
             <li>
-              <Link href="">個人情報保護方針</Link>
+              <Link href="">{t("Privacy")}</Link>
             </li>
             <li className={c.footAsideItemLast}>
-              <Link href="">情報セキュリティマネジメントシステム基本方針</Link>
+              <Link href="">{t("Information")}</Link>
             </li>
           </ul>
           <div className={c.footAsideLeft}>
@@ -302,9 +303,7 @@ const FooterRoot = () => {
             <div className={c.footAsideContent}>
               <strong>IS 597908 / IS0 27001:2013</strong>
               <br />
-              <span>
-                「東京本社におけるITコンサルティング事業」で取得しています。
-              </span>
+              <span>{t("Acquired")}</span>
             </div>
           </div>
         </div>

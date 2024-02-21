@@ -6,6 +6,9 @@ import Headerbackground from "../../../../components/headerBackground/HeaderBack
 import c from "./Page.module.css";
 import Recuit from "../../../../components/top/Recruit";
 import { useOs } from "@mantine/hooks";
+import { useEffect, useState } from "react";
+import { useLocale } from "next-intl";
+import { fetchDataPersons } from "../../../../api/Project";
 
 const listLeader = [
   {
@@ -29,6 +32,18 @@ const listLeader = [
 ];
 
 const Page = () => {
+  const [dataPerson, setDataPerson] = useState<any>([]);
+  const locale = useLocale();
+  useEffect(() => {
+    const fetData = async () => {
+      const res = await fetchDataPersons(locale);
+
+      setDataPerson(res.data);
+    };
+
+    fetData();
+  }, [locale]);
+
   const os = useOs();
   return (
     <>
@@ -87,15 +102,16 @@ const Page = () => {
         <div className={c.section}>
           <h2 className={c.bdrTitle}>リーダーシップ</h2>
           <ul className={c.leaderList}>
-            {listLeader.map((p: any, i: number) => {
+            {dataPerson.map((p: any, i: number) => {
+              const currentP = p.attributes;
               return (
                 <li key={i}>
                   <div className={c.leaderPhoto}>
-                    <img src={p.img} />
+                    <img src={currentP.image} />
                   </div>
-                  <div className={c.leaderJob}>{p.job}</div>
-                  <div className={c.leaderName}>{p.name}</div>
-                  <p>{p.des}</p>
+                  <div className={c.leaderJob}>{currentP.position}</div>
+                  <div className={c.leaderName}>{currentP.name}</div>
+                  <p>{currentP.background}</p>
                 </li>
               );
             })}

@@ -1,3 +1,7 @@
+.topTheme * {
+  color: var(--color-white);
+}
+
 .topTheme {
   background: url(//6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/raw_assets/public/delivery_corp_2022/images/common/bg_theme.png)
     50% / cover no-repeat;

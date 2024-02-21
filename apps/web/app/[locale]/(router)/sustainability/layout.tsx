@@ -7,6 +7,7 @@ import Headerbackground from "../../../../components/headerBackground/HeaderBack
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useOs } from "@mantine/hooks";
+import { useLocale, useTranslations } from "next-intl";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [restBrg, setRestBgr] = useState<{
@@ -18,46 +19,48 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   });
   const pathName = usePathname();
   const os = useOs();
+  const t = useTranslations("Index");
+  const locale = useLocale();
 
   useEffect(() => {
     switch (pathName) {
-      case "/jp/sustainability/diversityinclusion":
+      case `/${locale}/sustainability/diversityinclusion`:
         setRestBgr({
           image:
             os === "windows"
               ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_586371345%20(1)-2.jpeg"
               : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_586371345%20(2).jpeg",
-          description: "サステナビリティ",
+          description: t("Sustainability"),
         });
         break;
-      case "/jp/sustainability/healthandsafe":
+      case "sustainability/healthandsafe":
         setRestBgr({
           image:
             "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_582936229-2.jpeg",
-          description: "健康と安全",
+          description: t("Health"),
         });
         break;
 
-      case "/jp/sustainability/humanresource":
+      case "sustainability/humanresource":
         setRestBgr({
           image:
             "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_492497598.jpeg",
-          description: "人的資源の育成",
+          description: t("Developing"),
         });
         break;
-      case "/jp/sustainability/socialresponsibility":
+      case "sustainability/socialresponsibility":
         setRestBgr({
           image:
             "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_492497598.jpeg",
-          description: "社会への貢献と責任",
+          description: t("Contribution"),
         });
         break;
 
-      case "/jp/sustainability/data":
+      case "sustainability/data":
         setRestBgr({
           image:
             "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_587022816.jpeg",
-          description: "データ",
+          description: t("Data"),
         });
         break;
 
@@ -67,7 +70,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             os === "windows"
               ? "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_577490154-1.jpeg"
               : "https://6255088.fs1.hubspotusercontent-na1.net/hubfs/6255088/AdobeStock_577490154%20(1).jpeg",
-          description: "サステナビリティ",
+          description: t("Sustainability"),
         });
     }
   }, [pathName, os]);
@@ -78,23 +81,27 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className={c.topicPath}>
         <Link href="/jp">HOME</Link>
         <span> + </span>
-        <span>サステナビリティ</span>
+        <span>{t("Sustainability")}</span>
       </div>
       <div className={c.contents}>
         <div className={c.section}>
           <div className={c.pageIntro}>
-            <Link href="/jp/sustainability">メッセージ</Link>
-            <Link href="/jp/sustainability/diversityinclusion">
-              ダイバーシティ＆インクルージョン
+            <Link href={`/${locale}/sustainability`}>{t("Message")}</Link>
+            <Link href="sustainability/diversityinclusion">
+              {t("Diversity")}
             </Link>
-            <Link href="/jp/sustainability/healthandsafe">健康と安全</Link>
-            <Link href="/jp/sustainability/diversityinclusion">
-              人的資源の育成
+            <Link href={`/${locale}/sustainability/healthandsafe`}>
+              {t("Health")}
             </Link>
-            <Link href="/jp/sustainability/diversityinclusion">
-              社会への貢献と責任
+            <Link href={`/${locale}/sustainability/diversityinclusion`}>
+              {t("Developing")}
             </Link>
-            <Link href="/jp/sustainability/diversityinclusion">データ</Link>
+            <Link href={`/${locale}/sustainability/diversityinclusion`}>
+              {t("Contribution")}
+            </Link>
+            <Link href={`/${locale}/sustainability/diversityinclusion`}>
+              {t("Data")}
+            </Link>
           </div>
           <hr />
           {children}
