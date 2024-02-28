@@ -106,16 +106,16 @@ function WhatWeDoProvider(props: any) {
 
   useEffect(() => {
     if (themes === null) return;
+
     const getDataProjectBy = async (type: string) => {
       const dataFetch = await fetchDataProjects(locale);
+
       const result: any[] = [];
       dataFetch.data.map((item: any) => {
-        const themes = item.attributes.themes.content;
-        if (themes.length > 0) {
-          if (themes.includes(type)) {
-            result.push(item);
-          }
-        }
+        const themes = item.attributes.Themes;
+        themes.map((theme: any, iTheme: number) => {
+          result.push(item);
+        });
       });
 
       setProducts(result);
@@ -231,22 +231,20 @@ function Content() {
                           {currentProduct.title}
                         </div>
                         <ul className={c.caseCats}>
-                          {currentProduct.themes.content.length > 0 &&
-                            currentProduct.themes.content.map(
-                              (t: any, it: number) => {
-                                return (
-                                  <li key={it} className={c["cat-theme"]}>
-                                    {t}
-                                  </li>
-                                );
-                              }
-                            )}
+                          {currentProduct.Themes.length > 0 &&
+                            currentProduct.Themes.map((t: any, it: number) => {
+                              return (
+                                <li key={it} className={c["cat-theme"]}>
+                                  {t.Name}
+                                </li>
+                              );
+                            })}
                         </ul>
                         <div className={c.caseTxt}>
-                          {currentProduct.descriptions.content.length > 0 &&
-                            currentProduct.descriptions.content.map(
+                          {currentProduct.Descriptions.length > 0 &&
+                            currentProduct.Descriptions.map(
                               (txt: any, iTxt: number) => {
-                                return <p key={iTxt}>{txt}</p>;
+                                return <p key={iTxt}>{txt.Name}</p>;
                               }
                             )}
                         </div>

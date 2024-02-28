@@ -22,7 +22,6 @@ function NewsProvider(props: any) {
   useEffect(() => {
     const getDataProjectBy = async () => {
       const dataFetch = await fetchDataNews(locale);
-      console.log(dataFetch);
       if (tag === "") {
         setListTag(dataFetch.data);
         return;
