@@ -494,7 +494,7 @@ const HeaderRoot = () => {
                 <li className={classes.headerCNVBtn}>
                   <div>
                     <Link
-                      href=""
+                      href={`/${locale}/hello`}
                       className={`${classes.headerCNBtnLink} ${
                         scrollDistance || opened
                           ? classes["btnCNV--active"]
@@ -511,7 +511,7 @@ const HeaderRoot = () => {
                 <li className={classes.headerCNVBtn}>
                   <div>
                     <Link
-                      href=""
+                      href={`/${locale}/hello`}
                       className={`${classes.headerCNBtnLink} ${
                         scrollDistance || opened
                           ? classes["btnCNV--active"]
